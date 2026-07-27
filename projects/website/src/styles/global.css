@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   CANDELA — DESIGN SYSTEM (PLACEHOLDER)
+   ------------------------------------------------------------
+   Everything visual is defined here. When the real Candela
+   design system arrives, replace the values in :root and the
+   two --font-* tokens; no component file should need touching.
+
+   Palette intent: warm candlelight. Parchment paper base,
+   espresso ink, brass flame accent, and a near-black "wick"
+   tone for high-contrast sections.
+   ============================================================ */
+
+:root {
+  --radius: 0.5rem;
+
+  /* --- Brand ramp ------------------------------------------ */
+  --parchment: #fbf7f1; /* page base */
+  --parchment-deep: #f3ece1; /* alternating section base */
+  --sand: #e6dbca; /* borders, rules, dividers */
+  --photo-bg: #f6f3ee; /* tile behind product shots — see note below */
+  --espresso: #241c17; /* primary ink */
+  --espresso-soft: #6a5c51; /* secondary ink */
+  --brass: #a66a32; /* flame accent — CTAs, marks */
+  --brass-bright: #c8873f; /* hover / highlight */
+  --wick: #171310; /* dark section base */
+
+  /* --- shadcn semantic tokens ------------------------------ */
+  --background: var(--parchment);
+  --foreground: var(--espresso);
+
+  --card: #ffffff;
+  --card-foreground: var(--espresso);
+
+  --popover: #ffffff;
+  --popover-foreground: var(--espresso);
+
+  --primary: var(--espresso);
+  --primary-foreground: var(--parchment);
+
+  --secondary: var(--parchment-deep);
+  --secondary-foreground: var(--espresso);
+
+  --muted: var(--parchment-deep);
+  --muted-foreground: var(--espresso-soft);
+
+  --accent: var(--brass);
+  --accent-foreground: #ffffff;
+
+  --destructive: #9b2c2c;
+  --destructive-foreground: #ffffff;
+
+  --border: var(--sand);
+  --input: var(--sand);
+  --ring: var(--brass);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand ramp exposed as utilities: bg-parchment, text-brass, etc. */
+  --color-parchment: var(--parchment);
+  --color-parchment-deep: var(--parchment-deep);
+  --color-sand: var(--sand);
+  --color-espresso: var(--espresso);
+  --color-espresso-soft: var(--espresso-soft);
+  --color-brass: var(--brass);
+  --color-brass-bright: var(--brass-bright);
+  --color-wick: var(--wick);
+  --color-photo-bg: var(--photo-bg);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor targets so the sticky nav doesn't cover headings. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background: var(--brass);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* The wordmark is set as letterspaced lowercase per the brand
+     logo ("c a n d ē l a"). Swap for the real logo asset when it
+     lands in assets/brand/. */
+  .wordmark {
+    @apply font-display lowercase;
+    letter-spacing: 0.34em;
+    font-weight: 400;
+  }
+
+  /* Small uppercase label used above section headings. */
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.18em] text-brass;
+  }
+
+  /* Product photos sit on an off-white sweep, so they get their own tile
+     rather than sitting directly on a white card — otherwise the sweep reads
+     as a dirty rectangle. Sample the actual backdrop from a delivered photo
+     and set --photo-bg to match; the seam then disappears entirely. */
+  .photo-tile {
+    @apply flex items-center justify-center overflow-hidden rounded-md;
+    background: var(--photo-bg);
+  }
+
+  .section {
+    @apply px-6 py-20 md:py-28;
+  }
+
+  .container-x {
+    @apply mx-auto w-full max-w-6xl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

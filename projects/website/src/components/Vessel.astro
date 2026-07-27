@@ -1,0 +1,95 @@
+---
+/**
+ * Placeholder product silhouette.
+ *
+ * There is no product photography in assets/brand/ yet, so collections are
+ * represented by a drawn vessel in the brand palette. Replace this component
+ * with an <Image> once real photography lands — the call sites only pass
+ * `format`, so nothing else needs to change.
+ */
+import type { Format } from '@/data/collections'
+
+interface Props {
+  format: Format
+  class?: string
+}
+
+const { format, class: className = '' } = Astro.props
+---
+
+<svg
+  class={className}
+  viewBox="0 0 120 160"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  role="presentation"
+>
+  <defs>
+    <linearGradient id={`glow-${format}`} x1="60" y1="0" x2="60" y2="160">
+      <stop offset="0%" stop-color="var(--brass-bright)" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="var(--brass)" stop-opacity="0.06" />
+    </linearGradient>
+    <radialGradient id={`flame-${format}`} cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="var(--brass-bright)" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="var(--brass-bright)" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  {
+    format === 'jar' && (
+      <>
+        <circle cx="60" cy="30" r="18" fill={`url(#flame-${format})`} />
+        <path d="M60 22c3 4 4 6 4 9a4 4 0 0 1-8 0c0-3 1-5 4-9Z" fill="var(--brass-bright)" />
+        <rect x="34" y="44" width="52" height="8" rx="2" fill="var(--brass)" opacity="0.55" />
+        <rect
+          x="30"
+          y="52"
+          width="60"
+          height="86"
+          rx="6"
+          fill={`url(#glow-${format})`}
+          stroke="var(--brass)"
+          stroke-opacity="0.4"
+          stroke-width="1.5"
+        />
+        <rect x="38" y="78" width="44" height="34" rx="2" fill="var(--parchment)" opacity="0.75" />
+      </>
+    )
+  }
+
+  {
+    format === 'can' && (
+      <>
+        <circle cx="60" cy="26" r="14" fill={`url(#flame-${format})`} />
+        <path d="M60 20c2.5 3.5 3.5 5 3.5 7.5a3.5 3.5 0 0 1-7 0c0-2.5 1-4 3.5-7.5Z" fill="var(--brass-bright)" />
+        <ellipse cx="60" cy="46" rx="26" ry="6" fill="var(--brass)" opacity="0.5" />
+        <path
+          d="M34 46v78c0 4 12 8 26 8s26-4 26-8V46"
+          fill={`url(#glow-${format})`}
+          stroke="var(--brass)"
+          stroke-opacity="0.4"
+          stroke-width="1.5"
+        />
+        <rect x="34" y="70" width="52" height="40" fill="var(--parchment)" opacity="0.7" />
+      </>
+    )
+  }
+
+  {
+    format === 'diffuser' && (
+      <>
+        <path d="M52 18l6 26M60 14v30M68 18l-6 26" stroke="var(--brass)" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round" />
+        <rect x="54" y="44" width="12" height="16" rx="2" fill="var(--brass)" opacity="0.5" />
+        <path
+          d="M44 60h32c4 0 6 3 6 8v58c0 6-3 10-9 10H47c-6 0-9-4-9-10V68c0-5 2-8 6-8Z"
+          fill={`url(#glow-${format})`}
+          stroke="var(--brass)"
+          stroke-opacity="0.4"
+          stroke-width="1.5"
+        />
+        <path d="M44 84h32M44 96h32M44 108h32" stroke="var(--brass)" stroke-opacity="0.22" stroke-width="1.5" />
+      </>
+    )
+  }
+</svg>

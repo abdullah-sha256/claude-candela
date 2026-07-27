@@ -1,0 +1,68 @@
+---
+/**
+ * Product photo, keyed by SKU code.
+ *
+ * Drop a file named after the SKU code into src/assets/products/ and it is
+ * picked up automatically — KW001.png, CB007.jpg, DP002.webp. Case-insensitive,
+ * extension-agnostic. Any SKU without a photo falls back to the drawn vessel
+ * silhouette, so the page never shows a hole while the shoot is in progress.
+ *
+ * Astro resizes, converts to webp, and content-hashes everything at build time.
+ */
+import { Image } from 'astro:assets'
+import Vessel from './Vessel.astro'
+import type { Format } from '@/data/collections'
+
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/products/*.{png,jpg,jpeg,webp,avif}',
+  { eager: true }
+)
+
+const BY_SKU = new Map(
+  Object.entries(modules).map(([path, mod]) => [
+    path
+      .split('/')
+      .pop()!
+      .replace(/\.[^.]+$/, '')
+      .toUpperCase(),
+    mod.default,
+  ])
+)
+
+interface Props {
+  sku: string
+  name: string
+  format: Format
+  /** Rendered widths for the srcset. */
+  widths?: number[]
+  sizes?: string
+  class?: string
+}
+
+const {
+  sku,
+  name,
+  format,
+  widths = [160, 320, 480],
+  sizes = '160px',
+  class: className = '',
+} = Astro.props
+
+const photo = BY_SKU.get(sku.toUpperCase())
+---
+
+{
+  photo ? (
+    <Image
+      src={photo}
+      alt={`Candela ${name} scented soy candle`}
+      widths={widths}
+      sizes={sizes}
+      class={`object-contain ${className}`}
+      loading="lazy"
+      decoding="async"
+    />
+  ) : (
+    <Vessel format={format} class={className} />
+  )
+}
