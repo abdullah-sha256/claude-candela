@@ -44,16 +44,15 @@ edge then disappears completely.
 
 ## Content
 
-All product data lives in `src/data/collections.ts`, transcribed from
-`candela_drive_context.md`. 53 SKUs across 11 collections, each with its SKU code — the code
-doubles as the photo filename. `LE001 Grinch` is excluded — the master list has no vessel,
-size, or price for it.
+All product data lives in `src/data/collections.ts`, sourced from the Candela Wholesale
+Catalogue (`assets/brand/Candela Wholesale Catalogue FINAL.pdf`) — the current source of truth
+for collection line-ups, pricing, and program terms, superseding the earlier
+`candela_drive_context.md` transcription where the two disagreed. 53 SKUs across 11 collections,
+each with its SKU code — the code doubles as the photo filename.
 
-**There are deliberately no prices on the site.** The master SKU list and the "NEW CANDELA 2026"
-draft disagree on wholesale pricing, order minimums, and lead time, so the page routes buyers to
-a line-sheet request instead. `WHOLESALE_TERMS` only publishes the terms both documents agree
-on. Once you confirm which set is live, the omitted terms (opening order, reorder minimum, lead
-time) can go back in.
+Prices, case-pack rules, and `WHOLESALE_TERMS` are published on the site directly from the
+catalogue. If a future catalogue revision changes pricing or terms, update
+`src/data/collections.ts` to match.
 
 ## Inquiry form
 

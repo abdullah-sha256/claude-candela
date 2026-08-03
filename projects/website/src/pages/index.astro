@@ -30,8 +30,8 @@ const reasons = [
     body: 'Moments names the occasion, Travel names the place, Kawaii names the craving. Shoppers arrive already knowing who it is for — which is what moves units off a shelf.',
   },
   {
-    title: 'Open stock, no case packs',
-    body: 'Mix and match freely across every collection. Test a shelf with six scents instead of committing to a case of one.',
+    title: 'Open stock, low commitment',
+    body: 'Cans and reed diffusers carry no case minimum at all. Jars ship in cases of 12 — freely mixed across scents, so no shelf is committing to a case of one.',
   },
   {
     title: 'Short domestic lead times',
@@ -74,7 +74,7 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
         <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-espresso-soft">
           Candela is a Toronto candle brand built for modern gifting and strong visual
           merchandising — {SKU_COUNT} SKUs across {COLLECTION_COUNT} collections, poured in Canada,
-          sold open stock.
+          with no per-scent minimums on cans or diffusers.
         </p>
 
         <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -190,6 +190,14 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
                   {c.pitch}
                 </p>
 
+                <div class="mt-5 flex items-baseline justify-between border-t border-sand pt-4">
+                  <span class="text-lg text-espresso">${c.wholesale.toFixed(2)}</span>
+                  <span class="text-xs uppercase tracking-[0.12em] text-espresso-soft">
+                    wholesale · ${c.msrp.toFixed(2)} MSRP
+                  </span>
+                </div>
+                <p class="mt-1 text-xs text-espresso-soft">{c.casePack}</p>
+
                 <ul class="mt-6 grid grid-cols-3 gap-x-3 gap-y-5 border-t border-sand pt-6">
                   {c.skus.map((s) => (
                     <li>
@@ -226,9 +234,8 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
             Straightforward to stock.
           </h2>
           <p class="mt-6 max-w-md text-pretty leading-relaxed text-parchment/70">
-            No case-pack minimums per scent and no exclusivity strings. Current wholesale
-            pricing, order minimums, and lead times are on the line sheet — ask and we will send
-            it the same day.
+            A $250 opening order, no reorder minimum, and no exclusivity strings. Request the
+            line sheet below for full SKU-level detail and current stock.
           </p>
 
           <a href="#inquiry" class={buttonVariants({ variant: 'onDark', size: 'lg' }) + ' mt-8'}>

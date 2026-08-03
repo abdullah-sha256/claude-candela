@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy:preview": "astro build && wrangler deploy --assets dist --name candela-preview --temporary --compatibility-date 2026-07-30"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "wrangler": "^4.115.0"
   }
 }

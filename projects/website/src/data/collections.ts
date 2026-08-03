@@ -1,8 +1,9 @@
 /**
- * Product data — transcribed from candela_drive_context.md (Master SKU List).
- * No prices here by design: the site sends buyers to request a line sheet
- * instead, because the master list and the "NEW CANDELA 2026" draft disagree
- * on wholesale pricing. Do not add prices without confirming which set is live.
+ * Product data — from the Candela Wholesale Catalogue (assets/brand/Candela
+ * Wholesale Catalogue FINAL.pdf), the current source of truth for pricing,
+ * collection line-ups, and wholesale program terms. Supersedes the earlier
+ * transcription from candela_drive_context.md, which had two documents
+ * disagreeing on pricing and terms.
  */
 
 export type Format = 'jar' | 'can' | 'diffuser'
@@ -18,7 +19,7 @@ export const FORMATS: Record<Format, { name: string; spec: string; blurb: string
     name: 'Soda Can',
     spec: '300 g',
     blurb:
-      'Full-wrap printed can, built for display impact. The format customers pick up because it does not look like a candle.',
+      'Full-aperture printed can — the entire top opens away rather than a small pour hole, exposing the full wax pool for a bigger burn and stronger shelf presence.',
   },
   diffuser: {
     name: 'Fluted Bottle',
@@ -45,6 +46,12 @@ export interface Collection {
   pitch: string
   /** SKU whose photo represents the collection's vessel in the Formats section. */
   hero?: string
+  /** CAD suggested retail. */
+  msrp: number
+  /** CAD wholesale price. */
+  wholesale: number
+  /** Case pack requirement, per the catalogue. */
+  casePack: string
 }
 
 export const COLLECTIONS: Collection[] = [
@@ -55,6 +62,9 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Playful fragrances inspired by beloved Asian desserts, café favourites, and nostalgic treats.',
     pitch: 'Collectible gifting with Gen Z pull — the widest range in the line.',
+    msrp: 25,
+    wholesale: 12.5,
+    casePack: '12 units per case',
     skus: [
       { code: 'KW001', name: 'Matcha Latte' },
       { code: 'KW002', name: 'Brown Sugar Boba' },
@@ -74,13 +84,16 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Destination-inspired fragrances capturing the spirit, culture, and memories of iconic cities.',
     pitch: 'Souvenir and tourist retail. Toronto sells locally; the rest travel.',
+    msrp: 25,
+    wholesale: 12.5,
+    casePack: '12 units per case',
     skus: [
       { code: 'TR001', name: 'Toronto' },
       { code: 'TR002', name: 'Paris' },
       { code: 'TR003', name: 'Milan' },
-      { code: 'TR004', name: 'London' },
-      { code: 'TR005', name: 'Seoul' },
-      { code: 'TR006', name: 'Tokyo' },
+      { code: 'TR004', name: 'Tokyo' },
+      { code: 'TR005', name: 'London' },
+      { code: 'TR006', name: 'Seoul' },
     ],
   },
   {
@@ -88,12 +101,14 @@ export const COLLECTIONS: Collection[] = [
     name: 'Home',
     format: 'jar',
     description:
-      'Sophisticated fragrances inspired by beautiful spaces, everyday rituals, and comforts of home.',
+      'Everyday fragrances with timeless retail appeal, curated to suit a wide range of homes.',
     pitch: 'The safe repeat purchase. Broad appeal, no occasion required.',
     hero: 'HM001',
+    msrp: 25,
+    wholesale: 12.5,
+    casePack: '12 units per case',
     skus: [
       { code: 'HM001', name: 'Sunday Clean' },
-      { code: 'HM002', name: 'Quiet Studio' },
       { code: 'HM003', name: 'Azure Coast' },
       { code: 'HM004', name: 'Greenhouse' },
       { code: 'HM005', name: 'Velvet Smoke' },
@@ -105,14 +120,17 @@ export const COLLECTIONS: Collection[] = [
     name: 'Moments',
     format: 'jar',
     description:
-      "Thoughtfully curated candles celebrating life's milestones and meaningful connections.",
+      "Fragrances designed for life's meaningful occasions — birthdays, milestones, and everyday appreciation.",
     pitch: 'Message-based gifting. The customer already knows who it is for.',
+    msrp: 25,
+    wholesale: 12.5,
+    casePack: '12 units per case',
     skus: [
       { code: 'MM001', name: 'Happy Birthday' },
       { code: 'MM002', name: 'Congratulations' },
-      { code: 'MM003', name: 'Love You' },
       { code: 'MM004', name: 'Thinking of You' },
       { code: 'MM005', name: 'Thank You' },
+      { code: 'MM003', name: 'Love You' },
     ],
   },
   {
@@ -120,8 +138,11 @@ export const COLLECTIONS: Collection[] = [
     name: 'Intentions',
     format: 'jar',
     description:
-      'Crystal-infused candles for setting an intention — each poured with a tumbled stone.',
+      'Crystal-infused candles built around a meaningful intention — beautifully packaged and quietly symbolic.',
     pitch: 'Wellness and spiritual gifting, at a step up from the core jar tier.',
+    msrp: 28,
+    wholesale: 14,
+    casePack: '12 units per case',
     skus: [
       { code: 'IN001', name: 'Love' },
       { code: 'IN002', name: 'New Beginnings' },
@@ -135,9 +156,12 @@ export const COLLECTIONS: Collection[] = [
     name: 'Bar',
     format: 'can',
     description:
-      'Cocktail-inspired fragrances in a full-wrap printed can, built to merchandise like a drinks fridge.',
+      'Cocktail-inspired candles hand-poured into a full-aperture signature beverage can.',
     pitch: 'Lifestyle and RTD-beverage aesthetics. Strongest display impact in the line.',
     hero: 'CB001',
+    msrp: 35,
+    wholesale: 17.5,
+    casePack: 'No case pack minimum — mix and match scents freely',
     skus: [
       { code: 'CB001', name: 'Mimosa' },
       { code: 'CB002', name: 'Espresso Martini' },
@@ -152,45 +176,62 @@ export const COLLECTIONS: Collection[] = [
     slug: 'rituals',
     name: 'Rituals',
     format: 'can',
-    description: 'Ritual and moon-phase fragrances in the printed can format.',
-    pitch: 'Extends the can programme past cocktails into wellness.',
+    description:
+      'Everyday moments turned into intentional self-care — each can infused with a thoughtfully chosen keepsake crystal.',
+    pitch: 'Extends the can programme past cocktails into wellness, at its own price tier.',
+    msrp: 37,
+    wholesale: 18.5,
+    casePack: 'No case pack minimum — mix and match scents freely',
     skus: [
-      { code: 'RT001', name: 'New Moon' },
-      { code: 'RT002', name: 'Love Spell' },
+      { code: 'RT002', name: 'Love Spell (Rose Quartz)' },
+      { code: 'RT001', name: 'New Moon (Labradorite)' },
     ],
   },
   {
-    slug: 'holidays',
-    name: 'Holidays',
+    slug: 'winter',
+    name: 'Winter',
     format: 'jar',
-    description: 'Christmas in a jar — the seasonal core-tier assortment.',
-    pitch: 'Q4 volume driver on the familiar jar format.',
+    description:
+      'A timeless winter collection built for holiday gifting, festive window displays, and effortless seasonal merchandising.',
+    pitch: 'Q4 volume driver on the familiar jar format, priced above the core tier.',
+    msrp: 28,
+    wholesale: 14,
+    casePack: '12 units per case',
     skus: [
-      { code: 'HD001', name: 'Midnight Fir' },
       { code: 'HD002', name: 'Winter Parlour' },
       { code: 'HD003', name: 'Gilded Noel' },
+      { code: 'HD001', name: 'Midnight Fir' },
     ],
   },
   {
     slug: 'bar-holidays',
     name: 'Bar Holidays',
     format: 'can',
-    description: 'Seasonal cocktails in a can — the festive extension of the Bar line.',
+    description:
+      "Inspired by the season's most beloved holiday beverages — hand-poured into the signature full-aperture can.",
     pitch: 'Pairs with Bar for a full holiday endcap.',
+    msrp: 35,
+    wholesale: 17.5,
+    casePack: 'No case pack minimum — mix and match scents freely',
     skus: [
       { code: 'CBH001', name: 'Eggnog' },
       { code: 'CBH002', name: 'Gingerbread Latte' },
       { code: 'CBH003', name: 'Holiday Sangria' },
       { code: 'CBH004', name: 'Candy Cane Cocoa' },
+      { code: 'CBH005', name: 'Grinchmas' },
     ],
   },
   {
     slug: 'atelier',
     name: 'Atelier',
     format: 'diffuser',
-    description: 'Reed diffusers in a dark fluted bottle, boxed for the premium tier.',
+    description:
+      'Sophisticated fragrance in a beautifully fluted glass vessel — continuous, long-lasting scent for an everyday-luxury category.',
     pitch: 'Flame-free gifting at the top of the range.',
     hero: 'DL001',
+    msrp: 48,
+    wholesale: 24,
+    casePack: 'No case pack minimum — mix and match scents freely',
     skus: [
       { code: 'DL001', name: 'Golden Hour' },
       { code: 'DL002', name: 'Zen Garden' },
@@ -202,11 +243,14 @@ export const COLLECTIONS: Collection[] = [
     name: 'Pop',
     format: 'diffuser',
     description:
-      'Reed diffusers in a light fluted bottle, carrying the Kawaii fragrance language.',
+      "Playful reed diffusers inspired by today's café culture, carrying the Kawaii fragrance language.",
     pitch: 'The Kawaii customer, upgraded to the diffuser price point.',
+    msrp: 48,
+    wholesale: 24,
+    casePack: 'No case pack minimum — mix and match scents freely',
     skus: [
       { code: 'DP001', name: 'Matcha Latte' },
-      { code: 'DP002', name: 'Rice Milk' },
+      { code: 'DP002', name: 'Cloud Mochi' },
       { code: 'DP003', name: 'Peach Tea' },
     ],
   },
@@ -215,20 +259,16 @@ export const COLLECTIONS: Collection[] = [
 export const SKU_COUNT = COLLECTIONS.reduce((n, c) => n + c.skus.length, 0)
 export const COLLECTION_COUNT = COLLECTIONS.length
 
-/**
- * Wholesale terms shown publicly.
- *
- * Deliberately excludes opening-order minimum, reorder minimum and lead time:
- * the master list says $250 / $150 / 1–3 weeks, the 2026 draft says
- * $300 / $200 / 5–10 business days. Those go in the line sheet once confirmed.
- */
+/** Wholesale program terms, per the catalogue's "Wholesale Program" page. */
 export const WHOLESALE_TERMS = [
-  { term: 'Case Pack', detail: 'Open stock — mix and match freely' },
-  { term: 'Payment', detail: 'Credit card or e-transfer' },
-  { term: 'Shipping', detail: 'Calculated at time of order' },
-  { term: 'Testers', detail: 'Available on request' },
-  { term: 'Private Label', detail: 'Minimum 100 units per scent' },
+  { term: 'Opening Order', detail: '$250 minimum — mix and match any collection' },
+  { term: 'New Retailer Discount', detail: '10% off your first opening order' },
+  { term: 'Reorders', detail: 'No minimum order required' },
+  { term: 'Case Packs', detail: 'Jars ship in cases of 12; cans & diffusers, no minimum' },
+  { term: 'Payment', detail: 'Net 30 for approved accounts, or prepayment' },
+  { term: 'Production Time', detail: '5–10 business days' },
+  { term: 'Free Delivery', detail: 'GTA orders of $500+ ship free' },
   { term: 'Made In', detail: 'Canada' },
 ]
 
-export const CONTACT_EMAIL = 'thebohochic.ca@gmail.com'
+export const CONTACT_EMAIL = 'contact@candelacanada.ca'
