@@ -55,7 +55,7 @@ const photo = BY_SKU.get(sku.toUpperCase())
   photo ? (
     <Image
       src={photo}
-      alt={`Candela ${name} scented soy candle`}
+      alt={`Candela ${name} ${format === 'diffuser' ? 'reed diffuser' : 'scented soy candle'}`}
       widths={widths}
       sizes={sizes}
       class={`object-contain ${className}`}

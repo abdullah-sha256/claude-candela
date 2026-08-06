@@ -4,6 +4,32 @@
  * collection line-ups, and wholesale program terms. Supersedes the earlier
  * transcription from candela_drive_context.md, which had two documents
  * disagreeing on pricing and terms.
+ *
+ * Last synced against the Aug 2026 revision of that catalogue. Prices and
+ * line-ups were unchanged in that revision; what changed:
+ *   - Case packs: every collection now ships in cases of 12. Previously only
+ *     jars did, and cans and reed diffusers had no case pack minimum.
+ *   - Payment Terms (Net 30 / prepayment) and Territory consideration were
+ *     both dropped from the Wholesale Program page, so they are not asserted
+ *     here. Absence in the catalogue is not proof they no longer apply —
+ *     confirm before publishing either one again.
+ *
+ * Note the jar fill is 198 g (7 oz), per both catalogue editions. CLAUDE.md and
+ * candela_drive_context.md both say 298 g; they are wrong.
+ *
+ * DELIBERATE DEPARTURES FROM THE CATALOGUE — confirmed by the user 2026-08-05,
+ * do not "fix" these back:
+ *   - Atelier and Pop are each a SINGLE product, not three scents. The catalogue
+ *     lists Atelier as Golden Hour / Zen Garden / Coastal Light and Pop as
+ *     Matcha Latte / Cloud Mochi / Peach Tea; those scents do not exist as
+ *     separate SKUs. Atelier is the black fluted diffuser, Pop the amber/golden
+ *     one. DL002/DL003 and DP002/DP003 (with UPCs in the Drive master list) are
+ *     therefore stale — worth reconciling with the barcode records.
+ *
+ * Travel SKU codes come from the Drive master SKU list, which is the only source
+ * that carries codes and UPCs at all — the catalogue lists the six cities but
+ * assigns no codes. An earlier transcription had TR004/5/6 as Tokyo/London/Seoul;
+ * the master list says London/Seoul/Tokyo.
  */
 
 export type Format = 'jar' | 'can' | 'diffuser'
@@ -11,7 +37,7 @@ export type Format = 'jar' | 'can' | 'diffuser'
 export const FORMATS: Record<Format, { name: string; spec: string; blurb: string }> = {
   jar: {
     name: 'Glass Jar',
-    spec: '298 g · 7 oz',
+    spec: '198 g · 7 oz',
     blurb:
       'The core format. Clear straight-sided glass with a gold lid — stacks cleanly on a shelf and reads as a gift without wrapping.',
   },
@@ -64,7 +90,7 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Collectible gifting with Gen Z pull — the widest range in the line.',
     msrp: 25,
     wholesale: 12.5,
-    casePack: '12 units per case',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'KW001', name: 'Matcha Latte' },
       { code: 'KW002', name: 'Brown Sugar Boba' },
@@ -86,14 +112,14 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Souvenir and tourist retail. Toronto sells locally; the rest travel.',
     msrp: 25,
     wholesale: 12.5,
-    casePack: '12 units per case',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'TR001', name: 'Toronto' },
       { code: 'TR002', name: 'Paris' },
       { code: 'TR003', name: 'Milan' },
-      { code: 'TR004', name: 'Tokyo' },
-      { code: 'TR005', name: 'London' },
-      { code: 'TR006', name: 'Seoul' },
+      { code: 'TR004', name: 'London' },
+      { code: 'TR005', name: 'Seoul' },
+      { code: 'TR006', name: 'Tokyo' },
     ],
   },
   {
@@ -106,7 +132,7 @@ export const COLLECTIONS: Collection[] = [
     hero: 'HM001',
     msrp: 25,
     wholesale: 12.5,
-    casePack: '12 units per case',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'HM001', name: 'Sunday Clean' },
       { code: 'HM003', name: 'Azure Coast' },
@@ -124,7 +150,7 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Message-based gifting. The customer already knows who it is for.',
     msrp: 25,
     wholesale: 12.5,
-    casePack: '12 units per case',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'MM001', name: 'Happy Birthday' },
       { code: 'MM002', name: 'Congratulations' },
@@ -142,7 +168,7 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Wellness and spiritual gifting, at a step up from the core jar tier.',
     msrp: 28,
     wholesale: 14,
-    casePack: '12 units per case',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'IN001', name: 'Love' },
       { code: 'IN002', name: 'New Beginnings' },
@@ -161,7 +187,7 @@ export const COLLECTIONS: Collection[] = [
     hero: 'CB001',
     msrp: 35,
     wholesale: 17.5,
-    casePack: 'No case pack minimum — mix and match scents freely',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'CB001', name: 'Mimosa' },
       { code: 'CB002', name: 'Espresso Martini' },
@@ -181,7 +207,7 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Extends the can programme past cocktails into wellness, at its own price tier.',
     msrp: 37,
     wholesale: 18.5,
-    casePack: 'No case pack minimum — mix and match scents freely',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'RT002', name: 'Love Spell (Rose Quartz)' },
       { code: 'RT001', name: 'New Moon (Labradorite)' },
@@ -196,7 +222,7 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Q4 volume driver on the familiar jar format, priced above the core tier.',
     msrp: 28,
     wholesale: 14,
-    casePack: '12 units per case',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'HD002', name: 'Winter Parlour' },
       { code: 'HD003', name: 'Gilded Noel' },
@@ -212,7 +238,7 @@ export const COLLECTIONS: Collection[] = [
     pitch: 'Pairs with Bar for a full holiday endcap.',
     msrp: 35,
     wholesale: 17.5,
-    casePack: 'No case pack minimum — mix and match scents freely',
+    casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'CBH001', name: 'Eggnog' },
       { code: 'CBH002', name: 'Gingerbread Latte' },
@@ -226,33 +252,25 @@ export const COLLECTIONS: Collection[] = [
     name: 'Atelier',
     format: 'diffuser',
     description:
-      'Sophisticated fragrance in a beautifully fluted glass vessel — continuous, long-lasting scent for an everyday-luxury category.',
+      'Sophisticated fragrance in a beautifully fluted black glass vessel — continuous, long-lasting scent for an everyday-luxury category.',
     pitch: 'Flame-free gifting at the top of the range.',
     hero: 'DL001',
     msrp: 48,
     wholesale: 24,
-    casePack: 'No case pack minimum — mix and match scents freely',
-    skus: [
-      { code: 'DL001', name: 'Golden Hour' },
-      { code: 'DL002', name: 'Zen Garden' },
-      { code: 'DL003', name: 'Coastal Light' },
-    ],
+    casePack: '12 units per case',
+    skus: [{ code: 'DL001', name: 'Atelier' }],
   },
   {
     slug: 'pop',
     name: 'Pop',
     format: 'diffuser',
     description:
-      "Playful reed diffusers inspired by today's café culture, carrying the Kawaii fragrance language.",
+      "A playful reed diffuser inspired by today's café culture, carrying the Kawaii design language.",
     pitch: 'The Kawaii customer, upgraded to the diffuser price point.',
     msrp: 48,
     wholesale: 24,
-    casePack: 'No case pack minimum — mix and match scents freely',
-    skus: [
-      { code: 'DP001', name: 'Matcha Latte' },
-      { code: 'DP002', name: 'Cloud Mochi' },
-      { code: 'DP003', name: 'Peach Tea' },
-    ],
+    casePack: '12 units per case',
+    skus: [{ code: 'DP001', name: 'Pop' }],
   },
 ]
 
@@ -264,8 +282,7 @@ export const WHOLESALE_TERMS = [
   { term: 'Opening Order', detail: '$250 minimum — mix and match any collection' },
   { term: 'New Retailer Discount', detail: '10% off your first opening order' },
   { term: 'Reorders', detail: 'No minimum order required' },
-  { term: 'Case Packs', detail: 'Jars ship in cases of 12; cans & diffusers, no minimum' },
-  { term: 'Payment', detail: 'Net 30 for approved accounts, or prepayment' },
+  { term: 'Case Packs', detail: 'Every collection ships in cases of 12 — mix and match scents within a case' },
   { term: 'Production Time', detail: '5–10 business days' },
   { term: 'Free Delivery', detail: 'GTA orders of $500+ ship free' },
   { term: 'Made In', detail: 'Canada' },

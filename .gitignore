@@ -20,3 +20,11 @@ build/
 
 # Logs
 *.log
+
+# Photo masters & working cutouts — kept local, not versioned.
+# These are ~370MB of camera originals and per-shot transparent cutouts. The
+# build only needs the normalised per-SKU set in
+# projects/website/src/assets/products/, which IS committed and is regenerated
+# from these by projects/website/scripts/build-product-photos.sh.
+assets/candles/
+assets/png/

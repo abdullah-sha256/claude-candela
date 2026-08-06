@@ -30,8 +30,8 @@ const reasons = [
     body: 'Moments names the occasion, Travel names the place, Kawaii names the craving. Shoppers arrive already knowing who it is for — which is what moves units off a shelf.',
   },
   {
-    title: 'Open stock, low commitment',
-    body: 'Cans and reed diffusers carry no case minimum at all. Jars ship in cases of 12 — freely mixed across scents, so no shelf is committing to a case of one.',
+    title: 'Mix and match, low commitment',
+    body: 'Every collection ships in cases of 12, freely mixed across scents — so no shelf is committing to a case of one. Reorders carry no minimum at all.',
   },
   {
     title: 'Short domestic lead times',
@@ -74,7 +74,7 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
         <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-espresso-soft">
           Candela is a Toronto candle brand built for modern gifting and strong visual
           merchandising — {SKU_COUNT} SKUs across {COLLECTION_COUNT} collections, poured in Canada,
-          with no per-scent minimums on cans or diffusers.
+          with no per-scent minimums — build your own case.
         </p>
 
         <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -171,8 +171,8 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
           {COLLECTION_COUNT} collections, {SKU_COUNT} scents.
         </h2>
         <p class="mt-5 max-w-xl leading-relaxed text-espresso-soft">
-          Every collection is available open stock. Build an assortment around one, or run the
-          full wall.
+          Every collection ships in mix-and-match cases of 12. Build an assortment around one,
+          or run the full wall.
         </p>
 
         <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -181,7 +181,8 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
               <article class="flex flex-col rounded-lg border border-sand bg-card p-7 transition-colors hover:border-brass/50">
                 <h3 class="text-xl text-espresso">{c.name}</h3>
                 <p class="mt-1 text-xs uppercase tracking-[0.12em] text-espresso-soft">
-                  {c.skus.length} scents · {FORMATS[c.format].name}
+                  {c.skus.length > 1 && `${c.skus.length} scents · `}
+                  {FORMATS[c.format].name}
                 </p>
 
                 <p class="mt-5 text-sm leading-relaxed text-espresso-soft">{c.description}</p>
@@ -198,24 +199,42 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
                 </div>
                 <p class="mt-1 text-xs text-espresso-soft">{c.casePack}</p>
 
-                <ul class="mt-6 grid grid-cols-3 gap-x-3 gap-y-5 border-t border-sand pt-6">
-                  {c.skus.map((s) => (
-                    <li>
-                      <div class="photo-tile aspect-square p-2">
-                        <ProductImage
-                          sku={s.code}
-                          name={s.name}
-                          format={c.format}
-                          sizes="(min-width: 1024px) 100px, (min-width: 768px) 140px, 26vw"
-                          class="h-full w-full"
-                        />
-                      </div>
-                      <p class="mt-2 text-center text-xs leading-snug text-espresso-soft">
-                        {s.name}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+                {/* Single-product collections (Atelier, Pop) show the product on
+                    its own — a one-tile grid captioned with the collection name
+                    would just repeat the heading. */}
+                {c.skus.length === 1 ? (
+                  <div class="mt-6 border-t border-sand pt-6">
+                    <div class="photo-tile mx-auto aspect-square w-2/3 p-3">
+                      <ProductImage
+                        sku={c.skus[0]!.code}
+                        name={c.name}
+                        format={c.format}
+                        widths={[240, 480, 720]}
+                        sizes="(min-width: 1024px) 220px, (min-width: 768px) 200px, 55vw"
+                        class="h-full w-full"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <ul class="mt-6 grid grid-cols-3 gap-x-3 gap-y-5 border-t border-sand pt-6">
+                    {c.skus.map((s) => (
+                      <li>
+                        <div class="photo-tile aspect-square p-2">
+                          <ProductImage
+                            sku={s.code}
+                            name={s.name}
+                            format={c.format}
+                            sizes="(min-width: 1024px) 100px, (min-width: 768px) 140px, 26vw"
+                            class="h-full w-full"
+                          />
+                        </div>
+                        <p class="mt-2 text-center text-xs leading-snug text-espresso-soft">
+                          {s.name}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </article>
             ))
           }

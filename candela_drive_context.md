@@ -12,62 +12,70 @@ Candela is a Toronto-based candle brand designed for modern gifting, strong visu
 
 *Source: "CANDELA NEW NEW NEW" (Google Sheet)*
 
+> **Reconciled against the Wholesale Catalogue 2026-08-05.** The catalogue
+> (`assets/brand/Candela Wholesale Catalogue FINAL.pdf`) is the source of truth for
+> line-ups, pricing, and specs; this sheet remains the only source of **SKU codes and
+> UPCs**, which the catalogue omits. Corrections applied below are marked, with the
+> original sheet value in brackets. Changed here: jar fill 198 g (sheet said 298 g —
+> the catalogue and the printed labels both say 198 g), Winter pricing, Rituals
+> pricing, CB007 wholesale, and rows now stale.
+
 | Collection | SKU | Product | Vessel | Size | MSRP | Wholesale | UPC |
 |---|---|---|---|---|---|---|---|
-| Candela Kawaii | KW001 | Matcha Latte | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW002 | Brown Sugar Boba | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW003 | Coffee Jelly | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW004 | Ube Cake | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW005 | Mango Pudding | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW006 | Mochi | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW007 | Peach Soju | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW008 | Melona | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Kawaii | KW009 | Banana Milk | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Travel | TR001 | Toronto | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Travel | TR002 | Paris | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Travel | TR003 | Milan | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Travel | TR004 | London | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Travel | TR005 | Seoul | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Travel | TR006 | Tokyo | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Home | HM001 | Sunday Clean | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Home | HM002 | Quiet Studio | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Home | HM003 | Azure Coast | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Home | HM004 | Greenhouse | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Home | HM005 | Velvet Smoke | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Home | HM006 | Forest Calm | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Moments | MM001 | Happy Birthday | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Moments | MM002 | Congratulations | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Moments | MM003 | Love You | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Moments | MM004 | Thinking of You | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Moments | MM005 | Thank You | Glass Jar | 298 g | 25 | 12.5 | |
-| Candela Intentions | IN001 | Love | Glass Jar | 298 g | 28 | 14 | |
-| Candela Intentions | IN002 | New Beginnings | Glass Jar | 298 g | 28 | 14 | |
-| Candela Intentions | IN003 | Abundance | Glass Jar | 298 g | 28 | 14 | |
-| Candela Intentions | IN004 | Peace | Glass Jar | 298 g | 28 | 14 | |
-| Candela Intentions | IN005 | Protection | Glass Jar | 298 g | 28 | 14 | |
+| Candela Kawaii | KW001 | Matcha Latte | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW002 | Brown Sugar Boba | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW003 | Coffee Jelly | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW004 | Ube Cake | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW005 | Mango Pudding | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW006 | Mochi | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW007 | Peach Soju | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW008 | Melona | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Kawaii | KW009 | Banana Milk | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Travel | TR001 | Toronto | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Travel | TR002 | Paris | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Travel | TR003 | Milan | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Travel | TR004 | London | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Travel | TR005 | Seoul | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Travel | TR006 | Tokyo | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Home | HM001 | Sunday Clean | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Home | HM002 | Quiet Studio **— DISCONTINUED**, not in the catalogue | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Home | HM003 | Azure Coast | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Home | HM004 | Greenhouse | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Home | HM005 | Velvet Smoke | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Home | HM006 | Forest Calm | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Moments | MM001 | Happy Birthday | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Moments | MM002 | Congratulations | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Moments | MM003 | Love You | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Moments | MM004 | Thinking of You | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Moments | MM005 | Thank You | Glass Jar | 198 g | 25 | 12.5 | |
+| Candela Intentions | IN001 | Love | Glass Jar | 198 g | 28 | 14 | |
+| Candela Intentions | IN002 | New Beginnings | Glass Jar | 198 g | 28 | 14 | |
+| Candela Intentions | IN003 | Abundance | Glass Jar | 198 g | 28 | 14 | |
+| Candela Intentions | IN004 | Peace | Glass Jar | 198 g | 28 | 14 | |
+| Candela Intentions | IN005 | Protection | Glass Jar | 198 g | 28 | 14 | |
 | Candela Bar | CB001 | Mimosa | Soda Can | 300 g | 35 | 17.5 | 627949460001 |
 | Candela Bar | CB002 | Espresso Martini | Soda Can | 300 g | 35 | 17.5 | 627949460025 |
 | Candela Bar | CB003 | Peach Bellini | Soda Can | 300 g | 35 | 17.5 | 627949460049 |
 | Candela Bar | CB004 | Piña Colada | Soda Can | 300 g | 35 | 17.5 | 627949460018 |
 | Candela Bar | CB005 | Rum Punch | Soda Can | 300 g | 35 | 17.5 | 627949460032 |
 | Candela Bar | CB006 | Mojito | Soda Can | 300 g | 35 | 17.5 | 627949460407 |
-| Candela Bar | CB007 | Muskoka Mule | Soda Can | 300 g | 35 | — | |
+| Candela Bar | CB007 | Muskoka Mule | Soda Can | 300 g | 35 | 17.5 | *(no UPC on file)* |
 | Candela Bar Holidays | CBH001 | Eggnog | Soda Can | 300 g | 35 | 17.5 | 627949460087 |
 | Candela Bar Holidays | CBH002 | Gingerbread Latte | Soda Can | 300 g | 35 | 17.5 | 627949460063 |
 | Candela Bar Holidays | CBH003 | Holiday Sangria | Soda Can | 300 g | 35 | 17.5 | 627949460056 |
 | Candela Bar Holidays | CBH004 | Candy Cane Cocoa | Soda Can | 300 g | 35 | 17.5 | 627949460070 |
-| Candela Holidays | HD001 | Midnight Fir | Glass Jar | 298 g | 25 | 12.5 | 627949460445 |
-| Candela Holidays | HD002 | Winter Parlour | Glass Jar | 298 g | 25 | 12.5 | 627949460438 |
-| Candela Holidays | HD003 | Gilded Noel | Glass Jar | 298 g | 25 | 12.5 | 627949460421 |
-| Candela Rituals | RT001 | New Moon | Soda Can | 300 g | 35 | 17.5 | 627949460483 |
-| Candela Rituals | RT002 | Love Spell | Soda Can | 300 g | 35 | 17.5 | 627949460094 |
-| Candela Limited Edition | LE001 | Grinch | — | — | — | — | |
-| Candela Atelier | DL001 | Golden Hour | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460551 |
-| Candela Atelier | DL002 | Zen Garden | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460568 |
-| Candela Atelier | DL003 | Coastal Light | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460575 |
-| Candela Pop | DP001 | Matcha Latte | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460582 |
-| Candela Pop | DP002 | Rice Milk | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460599 |
-| Candela Pop | DP003 | Peach Tea | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460605 |
+| Candela Winter | HD001 | Midnight Fir | Glass Jar | 198 g | 28 | 14 | 627949460445 |
+| Candela Winter | HD002 | Winter Parlour | Glass Jar | 198 g | 28 | 14 | 627949460438 |
+| Candela Winter | HD003 | Gilded Noel | Glass Jar | 198 g | 28 | 14 | 627949460421 |
+| Candela Rituals | RT001 | New Moon | Soda Can | 300 g | 37 | 18.5 | 627949460483 |
+| Candela Rituals | RT002 | Love Spell | Soda Can | 300 g | 37 | 18.5 | 627949460094 |
+| Candela Limited Edition | LE001 | Grinch **— now "Grinchmas" in Bar Holidays**; the site uses CBH005, which no source assigns. Needs a real code + UPC. | — | — | — | — | |
+| Candela Atelier | DL001 | Atelier *(sheet: "Golden Hour")* | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460551 |
+| Candela Atelier | DL002 | Zen Garden **— STALE**, Atelier is a single product | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460568 |
+| Candela Atelier | DL003 | Coastal Light **— STALE**, Atelier is a single product | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460575 |
+| Candela Pop | DP001 | Pop *(sheet: "Matcha Latte")* | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460582 |
+| Candela Pop | DP002 | Rice Milk **— STALE**, Pop is a single product | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460599 |
+| Candela Pop | DP003 | Peach Tea **— STALE**, Pop is a single product | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460605 |
 
 ### Collection descriptions
 - **Candela Kawaii** — Playful fragrances inspired by beloved Asian desserts, café favourites, and nostalgic treats.
@@ -81,25 +89,35 @@ Candela is a Toronto-based candle brand designed for modern gifting, strong visu
 
 *Source: "CANDELA NEW NEW NEW"*
 
+> **Reconciled against the Wholesale Catalogue 2026-08-05.** Catalogue values below;
+> the original Google Sheet value is in brackets where it differed.
+
 | Term | Detail |
 |---|---|
-| Opening Order Minimum | $250 |
-| Reorder Minimum | $150 |
-| Case Pack | Open Stock (Mix & Match Allowed) |
-| Payment Terms | Credit Card or E-Transfer |
-| Lead Time | 1–3 Weeks |
-| Shipping | Calculated at Time of Order |
-| Tester Policy | Available Upon Request |
+| Opening Order Minimum | $250 — mix and match any collection or scent |
+| New Retailer Incentive | 10% off the first opening order |
+| Reorder Minimum | **None** *(sheet: $150)* |
+| Case Pack | **Every collection ships in cases of 12**, mix and match scents freely within a case *(sheet: "Open Stock (Mix & Match Allowed)")* |
+| Payment Terms | **Not stated in the current catalogue.** The sheet says Credit Card or E-Transfer; the previous catalogue edition said Net 30 for approved accounts or prepayment, and the current edition drops the section entirely. Confirm before quoting. |
+| Lead Time | 5–10 business days *(sheet: 1–3 weeks)* |
+| Shipping | Free within the GTA on orders $500+ *(sheet: "Calculated at Time of Order")* |
+| Merchandising Support | Shelf talkers, countertop displays, product photography |
+| Tester Policy | Available Upon Request *(sheet only — not in the catalogue)* |
 | Made In | Canada |
-| Contact | candelacanada.ca |
+| Contact | contact@candelacanada.ca · candelacanada.ca · @candelacanada.ca · Toronto ON |
 
-**Core collection wholesale/MSRP pricing:**
+**Core collection wholesale/MSRP pricing** (catalogue):
 - Home / Moments / Travel / Kawaii: MSRP $25 | Wholesale $12.50
-- Intentions: MSRP $28 | Wholesale $14.00
-- Bar / Bar Holiday / Holiday / Rituals: MSRP $35 | Wholesale $17.50
-- Lux Reed Diffuser / Pop Reed Diffuser: MSRP $48 | Wholesale $24.00
+- Intentions / Winter: MSRP $28 | Wholesale $14.00
+- Bar / Bar Holidays: MSRP $35 | Wholesale $17.50
+- Rituals: MSRP $37 | Wholesale $18.50 *(sheet grouped it at $35/$17.50)*
+- Atelier / Pop reed diffusers: MSRP $48 | Wholesale $24.00
 
-*Note: A separate draft document ("NEW CANDELA 2026") lists slightly different terms — Opening order $300, Re-order minimum $200, Lead-time 5–10 business days, free GTA delivery on orders over $500, pickup available in Etobicoke — suggesting these may be updated/in-progress terms.*
+*The earlier conflict between this sheet and the "NEW CANDELA 2026" draft (opening order
+$300, re-order minimum $200, lead-time 5–10 days, free GTA delivery over $500, Etobicoke
+pickup) is resolved: the catalogue supersedes both. Note the catalogue keeps the $250
+opening order from this sheet, not the draft's $300, but takes the draft's lead time and
+GTA delivery terms.*
 
 ---
 
