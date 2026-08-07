@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy:preview": "astro build && wrangler deploy --assets dist --name candela-preview --temporary --compatibility-date 2026-07-30"
+    "deploy": "astro build && wrangler deploy",
+    "deploy:preview": "astro build && wrangler deploy --name candela-preview --temporary"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",

@@ -8,9 +8,36 @@ Astro 5 · Tailwind 4 · shadcn/ui (new-york, stone base) · React 19 islands.
 npm install
 npm run dev      # http://localhost:4321
 npm run build    # static output to dist/
+npm run deploy   # build + deploy to Cloudflare (needs `wrangler login` first)
 ```
 
-`dist/` is plain HTML/CSS/JS — deploy anywhere (Cloudflare Pages, Netlify, S3).
+## Deploying
+
+Served by **Cloudflare Workers static assets** — config in `wrangler.toml`. `dist/` is plain
+HTML/CSS/JS, so it would deploy anywhere, but the Workers setup is what's wired up.
+
+**Connecting the repo (Workers Builds).** In the Cloudflare dashboard: Workers & Pages →
+Create → Connect to Git → `margaritafuret/claude-candela`, then:
+
+| Setting | Value |
+|---|---|
+| Worker name | `candela-website` — **must** match `name` in `wrangler.toml` or builds fail |
+| Root directory | `projects/website` — the site is in a monorepo subdirectory |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` (the default) |
+
+Pushes to `main` then deploy automatically. Other branches run `npx wrangler versions upload`,
+publishing a preview version without touching production. `dist/` is gitignored on purpose —
+Cloudflare builds it.
+
+`npm run deploy:preview` is a separate escape hatch: `--temporary` deploys to an anonymous
+throwaway Cloudflare account with no login, useful for a quick shareable link, but the result
+lives in an account you can't manage and expires on its own.
+
+> **Before pointing this at candelacanada.ca**, delete `public/_headers` and `public/robots.txt`.
+> Both are staging guards that block search indexing (`X-Robots-Tag: noindex, nofollow` and
+> `Disallow: /`). Astro copies them into `dist/` and Workers honours `_headers`, so leaving them
+> in place on a production launch keeps the real site out of Google entirely.
 
 ## Swap points
 
@@ -47,8 +74,10 @@ edge then disappears completely.
 All product data lives in `src/data/collections.ts`, sourced from the Candela Wholesale
 Catalogue (`assets/brand/Candela Wholesale Catalogue FINAL.pdf`) — the current source of truth
 for collection line-ups, pricing, and program terms, superseding the earlier
-`candela_drive_context.md` transcription where the two disagreed. 53 SKUs across 11 collections,
-each with its SKU code — the code doubles as the photo filename.
+`candela_drive_context.md` transcription where the two disagreed. 49 SKUs across 11 collections,
+each with its SKU code — the code doubles as the photo filename. Note the catalogue carries no
+SKU codes or UPCs at all; the Drive master list is the only source for those, so it wins on
+codes even though the catalogue wins on everything else.
 
 Prices, case-pack rules, and `WHOLESALE_TERMS` are published on the site directly from the
 catalogue. If a future catalogue revision changes pricing or terms, update
@@ -60,6 +89,5 @@ catalogue. If a future catalogue revision changes pricing or terms, update
 client — nothing is posted, since there is no backend. To capture submissions properly, point
 the form at Formspree / Netlify Forms and delete the `onSubmit` handler.
 
-Contact address is `CONTACT_EMAIL` in `src/data/collections.ts`, currently the
-`thebohochic.ca@gmail.com` address from the business docs. Worth replacing with a
-`@candelacanada.ca` address before this goes in front of buyers.
+Contact address is `CONTACT_EMAIL` in `src/data/collections.ts`, now the catalogue's
+`contact@candelacanada.ca`.

@@ -1,0 +1,35 @@
+# Cloudflare Workers config for the Candela wholesale site.
+#
+# This is a static Astro build served by Workers static assets — there is no
+# Worker script, just `assets`, so no `main` entry is needed.
+#
+# ── Connecting the repo (Workers Builds) ─────────────────────────────────────
+# In the Cloudflare dashboard: Workers & Pages → Create → Connect to Git, pick
+# margaritafuret/claude-candela, then set:
+#
+#   Worker name      candela-website      (MUST match `name` below, or builds fail)
+#   Root directory   projects/website     (the site is in a monorepo subdirectory)
+#   Build command    npm run build
+#   Deploy command   npx wrangler deploy  (this is the default)
+#
+# Cloudflare runs those from the root directory, so it finds this file. `dist/`
+# is gitignored on purpose — Workers Builds produces it during the build.
+#
+# Non-production branches default to `npx wrangler versions upload`, which
+# publishes a preview version without touching production.
+
+name = "candela-website"
+compatibility_date = "2026-08-06"
+
+[assets]
+directory = "./dist"
+
+# The site is a single static page with no 404.html, so missing paths should
+# return a real 404. Do NOT use "single-page-application" here — that serves
+# index.html with a 200 for every unknown URL, which lets search engines index
+# unlimited duplicate pages.
+not_found_handling = "none"
+
+# Workers Logs, for debugging deploys and traffic.
+[observability]
+enabled = true
