@@ -9,7 +9,7 @@
  *
  * Astro resizes, converts to webp, and content-hashes everything at build time.
  */
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import Vessel from './Vessel.astro'
 import type { Format } from '@/data/collections'
 
@@ -49,19 +49,51 @@ const {
 } = Astro.props
 
 const photo = BY_SKU.get(sku.toUpperCase())
+const alt = `Candela ${name} ${format === 'diffuser' ? 'reed diffuser' : 'scented soy candle'}`
+
+// A separate, larger render for the lightbox — the grid thumbnail's widths
+// top out around 480–960px, too soft to fill a screen. Source photos are
+// normalised to a 1200px canvas (see scripts/build-product-photos.sh), so
+// 1200 is the ceiling worth asking for.
+const fullImage = photo ? await getImage({ src: photo, width: 1200, format: 'webp' }) : null
 ---
 
 {
-  photo ? (
-    <Image
-      src={photo}
-      alt={`Candela ${name} ${format === 'diffuser' ? 'reed diffuser' : 'scented soy candle'}`}
-      widths={widths}
-      sizes={sizes}
-      class={`object-contain ${className}`}
-      loading="lazy"
-      decoding="async"
-    />
+  photo && fullImage ? (
+    <button
+      type="button"
+      class="lightbox-trigger group relative block h-full w-full cursor-zoom-in"
+      data-lightbox-src={fullImage.src}
+      data-lightbox-alt={alt}
+      aria-label={`View ${name} full-screen`}
+    >
+      <Image
+        src={photo}
+        alt={alt}
+        widths={widths}
+        sizes={sizes}
+        class={`object-contain ${className}`}
+        loading="lazy"
+        decoding="async"
+      />
+      <span
+        class="pointer-events-none absolute inset-0 flex items-center justify-center bg-espresso/0 transition-colors group-hover:bg-espresso/10 group-focus-visible:bg-espresso/10"
+        aria-hidden="true"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-6 scale-90 text-white opacity-0 drop-shadow transition-all group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
+        >
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+        </svg>
+      </span>
+    </button>
   ) : (
     <Vessel format={format} class={className} />
   )

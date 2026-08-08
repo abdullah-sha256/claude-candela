@@ -1,0 +1,124 @@
+---
+/**
+ * Site-wide fullscreen image viewer. Any element with the `lightbox-trigger`
+ * class and `data-lightbox-src` / `data-lightbox-alt` attributes (see
+ * ProductImage.astro) becomes clickable to open here, with prev/next
+ * cycling through every other trigger on the page in DOM order — so a
+ * visitor can browse straight through a whole collection's photos without
+ * closing and reopening.
+ *
+ * Vanilla JS, no framework: it only needs to run once, globally, and every
+ * trigger is plain server-rendered markup, so there's nothing to hydrate.
+ */
+---
+
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-wick/95 p-4 sm:p-10"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+>
+  <button
+    type="button"
+    id="lightbox-close"
+    class="absolute right-4 top-4 rounded-full p-2 text-parchment/80 transition-colors hover:bg-parchment/10 hover:text-parchment sm:right-6 sm:top-6"
+    aria-label="Close"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-7">
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    id="lightbox-prev"
+    class="absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-parchment/80 transition-colors hover:bg-parchment/10 hover:text-parchment sm:left-6"
+    aria-label="Previous image"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8">
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+  </button>
+
+  <figure class="flex max-h-full max-w-full flex-col items-center gap-3">
+    <img id="lightbox-img" src="" alt="" class="max-h-[80vh] max-w-[90vw] rounded-sm object-contain shadow-2xl sm:max-h-[85vh]" />
+    <figcaption id="lightbox-caption" class="text-center text-sm text-parchment/70"></figcaption>
+  </figure>
+
+  <button
+    type="button"
+    id="lightbox-next"
+    class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 text-parchment/80 transition-colors hover:bg-parchment/10 hover:text-parchment sm:right-6"
+    aria-label="Next image"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-8">
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  let triggers: HTMLElement[] = []
+  let current = -1
+  let lastFocused: HTMLElement | null = null
+
+  const box = document.getElementById('lightbox')!
+  const img = document.getElementById('lightbox-img') as HTMLImageElement
+  const caption = document.getElementById('lightbox-caption')!
+  const closeBtn = document.getElementById('lightbox-close')!
+  const prevBtn = document.getElementById('lightbox-prev')!
+  const nextBtn = document.getElementById('lightbox-next')!
+
+  function show(index: number) {
+    if (!triggers.length) return
+    current = (index + triggers.length) % triggers.length
+    const t = triggers[current]!
+    img.src = t.dataset.lightboxSrc ?? ''
+    img.alt = t.dataset.lightboxAlt ?? ''
+    caption.textContent = t.dataset.lightboxAlt ?? ''
+  }
+
+  function open(trigger: HTMLElement) {
+    // Re-query on every open rather than once at load: the collection grid
+    // and formats section render their photo tiles from the same data, so
+    // this stays correct even if the page's content changes.
+    triggers = Array.from(document.querySelectorAll<HTMLElement>('.lightbox-trigger'))
+    const index = triggers.indexOf(trigger)
+    lastFocused = document.activeElement as HTMLElement
+    show(index === -1 ? 0 : index)
+    box.classList.remove('hidden')
+    box.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+    closeBtn.focus()
+    document.addEventListener('keydown', onKeydown)
+  }
+
+  function close() {
+    box.classList.add('hidden')
+    box.classList.remove('flex')
+    document.body.style.overflow = ''
+    img.src = ''
+    document.removeEventListener('keydown', onKeydown)
+    lastFocused?.focus()
+  }
+
+  function onKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') close()
+    else if (e.key === 'ArrowLeft') show(current - 1)
+    else if (e.key === 'ArrowRight') show(current + 1)
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest<HTMLElement>('.lightbox-trigger')
+    if (trigger) open(trigger)
+  })
+
+  closeBtn.addEventListener('click', close)
+  prevBtn.addEventListener('click', () => show(current - 1))
+  nextBtn.addEventListener('click', () => show(current + 1))
+  // Click the backdrop (not the image/figure/buttons) to close.
+  box.addEventListener('click', (e) => {
+    if (e.target === box) close()
+  })
+</script>

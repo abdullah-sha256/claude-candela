@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import ProductImage from '@/components/ProductImage.astro'
+import Lightbox from '@/components/Lightbox.astro'
 import { Nav } from '@/components/Nav'
 import { InquiryForm } from '@/components/InquiryForm'
 import { buttonVariants } from '@/components/ui/button'
@@ -327,4 +328,6 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
       </p>
     </div>
   </footer>
+
+  <Lightbox />
 </Layout>
