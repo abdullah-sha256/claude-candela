@@ -78,7 +78,7 @@ import { CONTACT_EMAIL } from '@/data/onlycans'
   <div class="sm:col-span-2">
     <button type="submit" class="btn btn-accent w-full sm:w-auto">Request the Wholesale Order Form</button>
     <p id="inquiry-status" aria-live="polite" class="mt-3 text-sm text-ink-soft">
-      Opens a pre-filled email in your mail app — nothing is submitted from this page. Submitting also unlocks wholesale pricing above.
+      Opens a pre-filled email in your mail app — nothing is submitted from this page.
     </p>
   </div>
 </form>
@@ -106,17 +106,8 @@ import { CONTACT_EMAIL } from '@/data/onlycans'
       `Wholesale enquiry — ${get('business') || 'New stockist'}`
     )}&body=${encodeURIComponent(body)}`
 
-    // Wholesale pricing gate: retail price is shown by default; submitting
-    // this form is what reveals the wholesale figures throughout the page
-    // (and on future visits). See the `.wholesale-figure` rules in
-    // global.css and the unlock check in Layout.astro's <head>.
-    try {
-      localStorage.setItem('wholesaleUnlocked', '1')
-      document.documentElement.classList.add('wholesale-unlocked')
-    } catch {}
-
     if (status) {
-      status.textContent = `Your mail app should have opened with the message ready to send. If it didn't, email ${CONTACT_EMAIL} directly. Wholesale pricing is now unlocked throughout the page.`
+      status.textContent = `Your mail app should have opened with the message ready to send. If it didn't, email ${CONTACT_EMAIL} directly.`
     }
   })
 </script>

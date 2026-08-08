@@ -161,9 +161,8 @@ const BADGE_ICON: Record<string, 'question' | 'flower' | 'herb' | 'paw'> = {
                   <span class="text-lg font-bold text-ink">${RETAIL_PRICE}</span>
                   <span class="text-xs uppercase tracking-[0.1em] text-ink-soft">
                     retail ·
-                    <span class="wholesale-figure">${WHOLESALE_PRICE} wholesale</span>
-                    <a href="#inquiry" class="wholesale-locked-note underline decoration-dotted hover:text-sprout">
-                      wholesale on request
+                    <a href="#inquiry" class="underline decoration-dotted hover:text-sprout">
+                      email us for wholesale pricing
                     </a>
                   </span>
                 </div>
@@ -195,12 +194,9 @@ const BADGE_ICON: Record<string, 'question' | 'flower' | 'herb' | 'paw'> = {
                 <p class="text-[11px] uppercase tracking-[0.1em] text-ink-soft">{s.label}</p>
                 <p class="mt-2 text-lg font-bold text-ink">
                   {'wholesale' in s && s.wholesale ? (
-                    <>
-                      <span class="wholesale-figure">{s.value}</span>
-                      <a href="#inquiry" class="wholesale-locked-note text-sm font-normal underline decoration-dotted hover:text-sprout">
-                        On request
-                      </a>
-                    </>
+                    <a href="#inquiry" class="text-base underline decoration-dotted hover:text-sprout">
+                      {s.value}
+                    </a>
                   ) : (
                     s.value
                   )}

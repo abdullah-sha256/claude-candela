@@ -20,18 +20,6 @@ const {
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Wholesale pricing gate: reveal wholesale figures immediately for a
-         visitor who unlocked them on a previous visit, before first paint,
-         so there's no flash of the locked "request it" prompt. Set by
-         InquiryForm.tsx on submit. See global.css's .wholesale-figure rules. -->
-    <script is:inline>
-      try {
-        if (localStorage.getItem('wholesaleUnlocked') === '1') {
-          document.documentElement.classList.add('wholesale-unlocked')
-        }
-      } catch {}
-    </script>
-
     <title>{title}</title>
     <meta name="description" content={description} />
 

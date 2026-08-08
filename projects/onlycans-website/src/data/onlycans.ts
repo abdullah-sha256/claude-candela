@@ -111,7 +111,7 @@ export const WHY_PARTNER: Reason[] = [
   {
     n: '06',
     title: 'A gift for every occasion on the calendar',
-    body: 'Birthdays, teacher gifts, housewarmings, thank-yous, Mother’s and Father’s Day, office grab bags — one $10–$20 SKU that answers "what do I get them" all year long.',
+    body: 'Birthdays, teacher gifts, housewarmings, thank-yous, Mother’s and Father’s Day, office grab bags — one $20 retail SKU that answers "what do I get them" all year long.',
   },
   {
     n: '07',
@@ -130,12 +130,12 @@ export const WHY_PARTNER: Reason[] = [
   },
 ]
 
-/** The 'wholesale' stat is rendered specially in index.astro — gated behind
- *  the inquiry form, with `value` used as the unlocked figure — rather than
- *  through the generic label/value map every other stat uses. */
+/** Wholesale price is intentionally never printed on the site — the
+ *  'Wholesale Price' stat points to the inquiry form instead of a number.
+ *  Rendered specially in index.astro to turn its value into a link. */
 export const ORDERING_STATS = [
   { label: 'Retail Price', value: `$${RETAIL_PRICE} CAD` },
-  { label: 'Wholesale Price', value: `$${WHOLESALE_PRICE} CAD`, wholesale: true },
+  { label: 'Wholesale Price', value: 'Email us', wholesale: true },
   { label: 'Min. Opening Order', value: '$250 CAD' },
   { label: 'Reorders', value: 'No Minimum' },
   { label: 'GTA Delivery', value: 'Free on $500+' },

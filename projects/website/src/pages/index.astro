@@ -194,11 +194,10 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
                 <div class="mt-5 flex items-baseline justify-between border-t border-sand pt-4">
                   <span class="text-lg text-espresso">${c.msrp.toFixed(2)}</span>
                   <span class="text-xs uppercase tracking-[0.12em] text-espresso-soft">
-                    <span class="wholesale-figure">${c.wholesale.toFixed(2)} wholesale</span>
-                    <a href="#inquiry" class="wholesale-locked-note underline decoration-dotted hover:text-brass">
-                      Wholesale price on request
+                    MSRP ·
+                    <a href="#inquiry" class="underline decoration-dotted hover:text-brass">
+                      Email us for wholesale pricing
                     </a>
-                    · MSRP
                   </span>
                 </div>
                 <p class="mt-1 text-xs text-espresso-soft">{c.casePack}</p>

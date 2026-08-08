@@ -156,25 +156,6 @@
   .btn-outline {
     @apply border border-kraft bg-transparent text-ink hover:border-sprout hover:text-sprout;
   }
-
-  /* Wholesale pricing gate: retail price always shows; the wholesale figure
-     is swapped for a "request it" prompt until the visitor submits the
-     inquiry form (see InquiryForm.astro), at which point `wholesale-unlocked`
-     is set on <html> and persisted in localStorage. The class is applied by
-     an inline blocking script in Layout.astro's <head> (before paint) so
-     returning unlocked visitors never see a locked-then-unlocked flash. */
-  .wholesale-figure {
-    display: none;
-  }
-  .wholesale-locked-note {
-    display: inline;
-  }
-  html.wholesale-unlocked .wholesale-figure {
-    display: inline;
-  }
-  html.wholesale-unlocked .wholesale-locked-note {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
