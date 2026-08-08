@@ -138,6 +138,26 @@
     font-weight: 400;
   }
 
+  /* Fraunces' precomposed ē glyph draws its macron high and off-centre at
+     this weight/tracking — it reads as a stray dash floating in the gap
+     before the "l", not an accent sitting over the "e". Rather than fight
+     the font, the wordmark markup uses a plain "e" wrapped in this span and
+     the macron is drawn here instead, so it's always centred regardless of
+     font, size, or letter-spacing. */
+  .wordmark .macron-e {
+    position: relative;
+  }
+  .wordmark .macron-e::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0.24em;
+    width: 0.62em;
+    height: 0.07em;
+    background: currentColor;
+    transform: translateX(-50%);
+  }
+
   /* Small uppercase label used above section headings. */
   .eyebrow {
     @apply text-xs font-medium uppercase tracking-[0.18em] text-brass;

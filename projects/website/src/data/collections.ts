@@ -17,14 +17,14 @@
  * Note the jar fill is 198 g (7 oz), per both catalogue editions. CLAUDE.md and
  * candela_drive_context.md both say 298 g; they are wrong.
  *
- * DELIBERATE DEPARTURES FROM THE CATALOGUE — confirmed by the user 2026-08-05,
- * do not "fix" these back:
- *   - Atelier and Pop are each a SINGLE product, not three scents. The catalogue
- *     lists Atelier as Golden Hour / Zen Garden / Coastal Light and Pop as
- *     Matcha Latte / Cloud Mochi / Peach Tea; those scents do not exist as
- *     separate SKUs. Atelier is the black fluted diffuser, Pop the amber/golden
- *     one. DL002/DL003 and DP002/DP003 (with UPCs in the Drive master list) are
- *     therefore stale — worth reconciling with the barcode records.
+ * Atelier and Pop each have only ONE physical bottle design (Atelier: black
+ * fluted glass; Pop: amber/gold), photographed once per collection — but the
+ * catalogue lists three distinct scents per collection (Atelier: Golden Hour,
+ * Zen Garden, Coastal Light; Pop: Matcha Latte, Cloud Mochi, Peach Tea), and
+ * the scent isn't visible from outside the bottle. Restored 2026-08-08 after
+ * a prior pass had collapsed both to a single SKU each; per the user, list
+ * all three scents like every other collection, reusing the one bottle photo
+ * for all three tiles (see build-product-photos.sh's DL00x/DP00x mapping).
  *
  * Travel SKU codes come from the Drive master SKU list, which is the only source
  * that carries codes and UPCs at all — the catalogue lists the six cities but
@@ -252,25 +252,34 @@ export const COLLECTIONS: Collection[] = [
     name: 'Atelier',
     format: 'diffuser',
     description:
-      'Sophisticated fragrance in a beautifully fluted black glass vessel — continuous, long-lasting scent for an everyday-luxury category.',
+      'Sophisticated fragrance in a beautifully fluted black glass vessel — continuous, long-lasting scent for an everyday-luxury category. One bottle design across three scents.',
     pitch: 'Flame-free gifting at the top of the range.',
     hero: 'DL001',
     msrp: 48,
     wholesale: 24,
     casePack: '12 units per case',
-    skus: [{ code: 'DL001', name: 'Atelier' }],
+    skus: [
+      { code: 'DL001', name: 'Golden Hour' },
+      { code: 'DL002', name: 'Zen Garden' },
+      { code: 'DL003', name: 'Coastal Light' },
+    ],
   },
   {
     slug: 'pop',
     name: 'Pop',
     format: 'diffuser',
     description:
-      "A playful reed diffuser inspired by today's café culture, carrying the Kawaii design language.",
+      "A playful reed diffuser inspired by today's café culture, carrying the Kawaii design language. One bottle design across three scents.",
     pitch: 'The Kawaii customer, upgraded to the diffuser price point.',
+    hero: 'DP001',
     msrp: 48,
     wholesale: 24,
     casePack: '12 units per case',
-    skus: [{ code: 'DP001', name: 'Pop' }],
+    skus: [
+      { code: 'DP001', name: 'Matcha Latte' },
+      { code: 'DP002', name: 'Cloud Mochi' },
+      { code: 'DP003', name: 'Peach Tea' },
+    ],
   },
 ]
 

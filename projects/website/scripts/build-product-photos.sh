@@ -108,8 +108,17 @@ CBH003 can      can-holiday-sangria-01
 CBH004 can      candela-candy-01
 CBH005 can      can-grinch-01
 DL001  diffuser Candela-127
+DL002  diffuser Candela-127
+DL003  diffuser Candela-127
 DP001  diffuser Candela-128
+DP002  diffuser Candela-128
+DP003  diffuser Candela-128
 "
+# Atelier (DL00x) and Pop (DP00x) each have one photographed bottle design —
+# only the fill/scent differs between the three SKUs in each collection, and
+# that isn't visible from outside the bottle. All three SKU codes in each
+# collection map to the same source photo rather than falling back to the
+# drawn silhouette for two of every three tiles.
 
 count=0
 while read -r sku format src; do

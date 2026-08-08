@@ -70,12 +70,12 @@ Candela is a Toronto-based candle brand designed for modern gifting, strong visu
 | Candela Rituals | RT001 | New Moon | Soda Can | 300 g | 37 | 18.5 | 627949460483 |
 | Candela Rituals | RT002 | Love Spell | Soda Can | 300 g | 37 | 18.5 | 627949460094 |
 | Candela Limited Edition | LE001 | Grinch **— now "Grinchmas" in Bar Holidays**; the site uses CBH005, which no source assigns. Needs a real code + UPC. | — | — | — | — | |
-| Candela Atelier | DL001 | Atelier *(sheet: "Golden Hour")* | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460551 |
-| Candela Atelier | DL002 | Zen Garden **— STALE**, Atelier is a single product | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460568 |
-| Candela Atelier | DL003 | Coastal Light **— STALE**, Atelier is a single product | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460575 |
-| Candela Pop | DP001 | Pop *(sheet: "Matcha Latte")* | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460582 |
-| Candela Pop | DP002 | Rice Milk **— STALE**, Pop is a single product | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460599 |
-| Candela Pop | DP003 | Peach Tea **— STALE**, Pop is a single product | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460605 |
+| Candela Atelier | DL001 | Golden Hour | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460551 |
+| Candela Atelier | DL002 | Zen Garden | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460568 |
+| Candela Atelier | DL003 | Coastal Light | Dark Fluted Bottle | 150 ml | 48 | 24 | 627949460575 |
+| Candela Pop | DP001 | Matcha Latte | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460582 |
+| Candela Pop | DP002 | Cloud Mochi *(sheet: "Rice Milk")* | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460599 |
+| Candela Pop | DP003 | Peach Tea | Light Fluted Bottle | 150 ml | 48 | 24 | 627949460605 |
 
 ### Collection descriptions
 - **Candela Kawaii** — Playful fragrances inspired by beloved Asian desserts, café favourites, and nostalgic treats.

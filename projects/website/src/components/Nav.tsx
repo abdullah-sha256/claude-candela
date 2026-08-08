@@ -46,7 +46,7 @@ export function Nav() {
         aria-label="Primary"
       >
         <a href="#main" className="wordmark text-lg text-espresso">
-          candēla
+          cand<span className="macron-e">e</span>la
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
