@@ -86,7 +86,7 @@ export const WHY_PARTNER: Reason[] = [
   {
     n: '01',
     title: 'A 50% margin, not a promise of one',
-    body: '$10 CAD wholesale, $20 CAD suggested retail. Straight keystone pricing — no tiered games, no volume math required to know what you’re making.',
+    body: '$20 CAD suggested retail, with wholesale pricing available on request. Straight keystone pricing — no tiered games, no volume math required to know what you’re making.',
   },
   {
     n: '02',
@@ -130,8 +130,12 @@ export const WHY_PARTNER: Reason[] = [
   },
 ]
 
+/** The 'wholesale' stat is rendered specially in index.astro — gated behind
+ *  the inquiry form, with `value` used as the unlocked figure — rather than
+ *  through the generic label/value map every other stat uses. */
 export const ORDERING_STATS = [
-  { label: 'Wholesale / Retail', value: '$10 / $20' },
+  { label: 'Retail Price', value: `$${RETAIL_PRICE} CAD` },
+  { label: 'Wholesale Price', value: `$${WHOLESALE_PRICE} CAD`, wholesale: true },
   { label: 'Min. Opening Order', value: '$250 CAD' },
   { label: 'Reorders', value: 'No Minimum' },
   { label: 'GTA Delivery', value: 'Free on $500+' },

@@ -158,6 +158,25 @@
     transform: translateX(-50%);
   }
 
+  /* Wholesale pricing gate: MSRP always shows; the wholesale figure is
+     swapped for a "request it" prompt until the visitor submits the inquiry
+     form (see InquiryForm.tsx), at which point `wholesale-unlocked` is set
+     on <html> and persisted in localStorage. The class is applied by an
+     inline blocking script in Layout.astro's <head> (before paint) so
+     returning unlocked visitors never see a locked-then-unlocked flash. */
+  .wholesale-figure {
+    display: none;
+  }
+  .wholesale-locked-note {
+    display: inline;
+  }
+  html.wholesale-unlocked .wholesale-figure {
+    display: inline;
+  }
+  html.wholesale-unlocked .wholesale-locked-note {
+    display: none;
+  }
+
   /* Small uppercase label used above section headings. */
   .eyebrow {
     @apply text-xs font-medium uppercase tracking-[0.18em] text-brass;

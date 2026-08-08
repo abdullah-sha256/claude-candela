@@ -35,6 +35,15 @@ export function InquiryForm() {
       `Wholesale enquiry — ${get('business') || 'New stockist'}`
     )}&body=${encodeURIComponent(body)}`
 
+    // Wholesale pricing gate: MSRP is shown by default; submitting this form
+    // is what reveals the wholesale figures throughout the page (and on
+    // future visits). See the `.wholesale-figure` rules in global.css and
+    // the unlock check in Layout.astro's <head>.
+    try {
+      localStorage.setItem('wholesaleUnlocked', '1')
+      document.documentElement.classList.add('wholesale-unlocked')
+    } catch {}
+
     setSent(true)
   }
 
@@ -84,8 +93,8 @@ export function InquiryForm() {
         </Button>
         <p aria-live="polite" className="mt-3 text-sm text-espresso-soft">
           {sent
-            ? `Your mail app should have opened with the message ready to send. If it didn't, email ${CONTACT_EMAIL} directly.`
-            : 'Opens a pre-filled email in your mail app — nothing is submitted from this page.'}
+            ? `Your mail app should have opened with the message ready to send. If it didn't, email ${CONTACT_EMAIL} directly. Wholesale pricing is now unlocked throughout the page.`
+            : 'Opens a pre-filled email in your mail app — nothing is submitted from this page. Submitting also unlocks wholesale pricing above.'}
         </p>
       </div>
     </form>

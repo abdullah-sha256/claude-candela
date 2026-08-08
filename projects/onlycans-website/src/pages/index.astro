@@ -158,8 +158,14 @@ const BADGE_ICON: Record<string, 'question' | 'flower' | 'herb' | 'paw'> = {
                 <h3 class="mt-1 text-lg font-semibold text-ink">{p.name}</h3>
                 <p class="mt-2 text-sm leading-relaxed text-ink-soft">{p.blurb}</p>
                 <div class="mt-5 flex items-baseline gap-2 border-t border-kraft pt-4">
-                  <span class="text-lg font-bold text-ink">${WHOLESALE_PRICE}</span>
-                  <span class="text-xs uppercase tracking-[0.1em] text-ink-soft">wholesale</span>
+                  <span class="text-lg font-bold text-ink">${RETAIL_PRICE}</span>
+                  <span class="text-xs uppercase tracking-[0.1em] text-ink-soft">
+                    retail ·
+                    <span class="wholesale-figure">${WHOLESALE_PRICE} wholesale</span>
+                    <a href="#inquiry" class="wholesale-locked-note underline decoration-dotted hover:text-sprout">
+                      wholesale on request
+                    </a>
+                  </span>
                 </div>
               </article>
             ))
@@ -182,12 +188,23 @@ const BADGE_ICON: Record<string, 'question' | 'flower' | 'herb' | 'paw'> = {
           Here's exactly what one order gets you.
         </h2>
 
-        <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-kraft bg-kraft sm:grid-cols-4">
+        <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-kraft bg-kraft sm:grid-cols-3 lg:grid-cols-5">
           {
             ORDERING_STATS.map((s) => (
               <div class="bg-card p-5 text-center">
                 <p class="text-[11px] uppercase tracking-[0.1em] text-ink-soft">{s.label}</p>
-                <p class="mt-2 text-lg font-bold text-ink">{s.value}</p>
+                <p class="mt-2 text-lg font-bold text-ink">
+                  {'wholesale' in s && s.wholesale ? (
+                    <>
+                      <span class="wholesale-figure">{s.value}</span>
+                      <a href="#inquiry" class="wholesale-locked-note text-sm font-normal underline decoration-dotted hover:text-sprout">
+                        On request
+                      </a>
+                    </>
+                  ) : (
+                    s.value
+                  )}
+                </p>
               </div>
             ))
           }

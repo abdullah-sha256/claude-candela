@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = 'OnlyCans — Grow in a Can, Wholesale',
-  description = "Real seeds, real soil, hidden inside a can that looks like it belongs on a drink shelf. Collection No. 01 from OnlyCans, Toronto. $10 wholesale, $20 suggested retail, $250 opening order, no reorder minimum.",
+  description = "Real seeds, real soil, hidden inside a can that looks like it belongs on a drink shelf. Collection No. 01 from OnlyCans, Toronto. $20 suggested retail, wholesale pricing on request, $250 opening order, no reorder minimum.",
 } = Astro.props
 ---
 
@@ -19,6 +19,18 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Wholesale pricing gate: reveal wholesale figures immediately for a
+         visitor who unlocked them on a previous visit, before first paint,
+         so there's no flash of the locked "request it" prompt. Set by
+         InquiryForm.astro on submit. See global.css's .wholesale-figure rules. -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem('wholesaleUnlocked') === '1') {
+          document.documentElement.classList.add('wholesale-unlocked')
+        }
+      } catch {}
+    </script>
 
     <title>{title}</title>
     <meta name="description" content={description} />
