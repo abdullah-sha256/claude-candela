@@ -151,9 +151,9 @@
     content: '';
     position: absolute;
     left: 50%;
-    top: 0.24em;
-    width: 0.62em;
-    height: 0.07em;
+    top: 0.34em;
+    width: 0.44em;
+    height: 0.06em;
     background: currentColor;
     transform: translateX(-50%);
   }
