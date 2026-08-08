@@ -1,8 +1,0 @@
-# ⚠️ STAGING ONLY — DELETE THIS FILE BEFORE LAUNCHING ON candelacanada.ca
-#
-# A *.pages.dev URL is unlisted but publicly reachable, so without this a
-# placeholder build (silhouette product images, no real photography) could be
-# indexed and surface under the Candela brand name. Leaving it in place on the
-# production launch would keep the real site out of Google entirely.
-/*
-  X-Robots-Tag: noindex, nofollow

@@ -34,10 +34,19 @@ Cloudflare builds it.
 throwaway Cloudflare account with no login, useful for a quick shareable link, but the result
 lives in an account you can't manage and expires on its own.
 
-> **Before pointing this at candelacanada.ca**, delete `public/_headers` and `public/robots.txt`.
-> Both are staging guards that block search indexing (`X-Robots-Tag: noindex, nofollow` and
-> `Disallow: /`). Astro copies them into `dist/` and Workers honours `_headers`, so leaving them
-> in place on a production launch keeps the real site out of Google entirely.
+### Indexing
+
+The site is **live and indexable**. The staging guards that used to block crawlers
+(`public/_headers` with `X-Robots-Tag: noindex, nofollow`, and `public/robots.txt` with
+`Disallow: /`) were removed for the candelacanada.ca launch.
+
+There is now no `robots.txt` at all, which crawlers treat as "index everything" — fine, but if
+you want to be explicit or add a sitemap, drop a new `public/robots.txt` in. Astro copies
+anything in `public/` to the site root verbatim, and Workers static assets honours `_headers`
+and `_redirects` files placed there too.
+
+If you ever need to take the site back out of the index, re-adding either file is enough —
+but note that removal from search results is not immediate.
 
 ## Swap points
 

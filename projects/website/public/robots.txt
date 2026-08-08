@@ -1,4 +1,0 @@
-# ⚠️ STAGING ONLY — DELETE THIS FILE BEFORE LAUNCHING ON candelacanada.ca
-# Belt-and-braces alongside public/_headers. See that file for why.
-User-agent: *
-Disallow: /
