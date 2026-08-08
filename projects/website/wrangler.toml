@@ -5,7 +5,7 @@
 #
 # ── Connecting the repo (Workers Builds) ─────────────────────────────────────
 # In the Cloudflare dashboard: Workers & Pages → Create → Connect to Git, pick
-# margaritafuret/claude-candela, then set:
+# abdullah-sha256/claude-candela, then set:
 #
 #   Worker name      candela-website      (MUST match `name` below, or builds fail)
 #   Root directory   projects/website     (the site is in a monorepo subdirectory)
