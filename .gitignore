@@ -28,3 +28,8 @@ build/
 # from these by projects/website/scripts/build-product-photos.sh.
 assets/candles/
 assets/png/
+
+# Same reasoning: raw collection-lineup banners (23MB). The normalised copies
+# the build uses live in projects/website/src/assets/collections/, which IS
+# committed.
+assets/collections/

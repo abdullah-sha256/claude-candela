@@ -1,0 +1,79 @@
+---
+/**
+ * Collection lineup banner, keyed by collection slug.
+ *
+ * Drop a file named after the collection's slug into src/assets/collections/
+ * (kawaii.png, bar-holidays.png, etc.) and it's picked up automatically —
+ * same convention as ProductImage.astro, one level up (collection, not SKU).
+ * A collection without a banner just doesn't render one — no fallback
+ * silhouette, since there's no single-vessel drawing that represents a whole
+ * lineup the way Vessel.astro does for one SKU.
+ */
+import { Image, getImage } from 'astro:assets'
+
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/collections/*.{png,jpg,jpeg,webp,avif}',
+  { eager: true }
+)
+
+const BY_SLUG = new Map(
+  Object.entries(modules).map(([path, mod]) => [
+    path.split('/').pop()!.replace(/\.[^.]+$/, ''),
+    mod.default,
+  ])
+)
+
+interface Props {
+  slug: string
+  name: string
+  class?: string
+}
+
+const { slug, name, class: className = '' } = Astro.props
+const photo = BY_SLUG.get(slug)
+const alt = `The Candela ${name} collection`
+
+// Source banners are 2304x768 (or 2000x2000 for Kawaii's 3x3 grid) — cap the
+// lightbox render at 2000 wide rather than the grid thumbnail's much smaller
+// widths, without upscaling past what was actually delivered.
+const fullImage = photo ? await getImage({ src: photo, width: 2000, format: 'webp' }) : null
+---
+
+{
+  photo && fullImage && (
+    <button
+      type="button"
+      class="lightbox-trigger group relative block h-full w-full cursor-zoom-in"
+      data-lightbox-src={fullImage.src}
+      data-lightbox-alt={alt}
+      aria-label={`View the ${name} collection full-screen`}
+    >
+      <Image
+        src={photo}
+        alt={alt}
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 1024px) 380px, (min-width: 768px) 340px, 88vw"
+        class={`object-contain ${className}`}
+        loading="lazy"
+        decoding="async"
+      />
+      <span
+        class="pointer-events-none absolute inset-0 flex items-center justify-center bg-espresso/0 transition-colors group-hover:bg-espresso/10 group-focus-visible:bg-espresso/10"
+        aria-hidden="true"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-6 scale-90 text-white opacity-0 drop-shadow transition-all group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
+        >
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+        </svg>
+      </span>
+    </button>
+  )
+}
