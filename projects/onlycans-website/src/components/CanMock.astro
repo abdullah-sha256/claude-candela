@@ -1,0 +1,158 @@
+---
+/**
+ * Placeholder product illustration — stands in for real product photography.
+ *
+ * MOCK ART, not final: a flat vector can with a colour-coded label band and a
+ * sprouting stem topped by a badge icon. Replace with real photos by dropping
+ * files into src/assets/products/ (see that folder's README once it exists)
+ * and swapping <CanMock> for an <Image> in index.astro — same pattern the
+ * Candela site uses for its per-SKU photos.
+ *
+ * Real product shots already exist at
+ * ../../../../assets/candles/onlycans/Candela-0{81,83,84,85,87,88}.jpg —
+ * not wired in here because mocks were requested explicitly.
+ */
+interface Props {
+  /** Short text set on the can's label band — kept to one word so it fits. */
+  label: string
+  /** Full product name, used only for the accessible name. Defaults to
+   *  `label` if omitted, but pass the real name — "My" alone (the short
+   *  label for "My First Plant in a Can") makes a poor screen-reader label. */
+  name?: string
+  accent: 'sprout-light' | 'sprout' | 'pop' | 'kraft' | 'tin'
+  badge: 'question' | 'flower' | 'herb' | 'paw'
+  class?: string
+}
+
+const { label, name = label, accent, badge, class: className = '' } = Astro.props
+
+// Literal hex rather than var() — keeps the illustration's palette fixed
+// even if the page theme tokens change later. Mirrors the tokens in
+// global.css at the time this was written.
+const ACCENTS: Record<Props['accent'], string> = {
+  'sprout-light': '#8fbf6e',
+  sprout: '#4b7a3d',
+  pop: '#c85a2e',
+  kraft: '#a68a4c',
+  tin: '#7c8f97',
+}
+const accentHex = ACCENTS[accent]
+const stemGreen = accent === 'tin' ? '#5f9450' : accent
+---
+
+<svg
+  viewBox="0 0 160 200"
+  class={className}
+  role="img"
+  aria-label={`${name} — illustration`}
+>
+  <!-- ground shadow -->
+  <ellipse cx="80" cy="182" rx="38" ry="7" fill="#000" opacity="0.08" />
+
+  <!-- sprout stem -->
+  <path
+    d="M80 58 C 74 44, 86 36, 80 22"
+    fill="none"
+    stroke={stemGreen === accent ? accentHex : ACCENTS.sprout}
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+  <ellipse
+    cx="70"
+    cy="42"
+    rx="9"
+    ry="5"
+    fill={ACCENTS.sprout}
+    transform="rotate(-30 70 42)"
+  />
+  <ellipse
+    cx="90"
+    cy="34"
+    rx="9"
+    ry="5"
+    fill={ACCENTS.sprout}
+    transform="rotate(20 90 34)"
+  />
+
+  <!-- badge -->
+  <circle cx="80" cy="20" r="14" fill={accentHex} stroke="#fff" stroke-width="2" />
+  {
+    badge === 'question' && (
+      <text
+        x="80"
+        y="26"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="700"
+        fill="#fff"
+        font-family="ui-sans-serif, system-ui, sans-serif"
+      >
+        ?
+      </text>
+    )
+  }
+  {
+    badge === 'flower' && (
+      <g fill="#fff">
+        <circle cx="80" cy="20" r="3" />
+        <ellipse cx="80" cy="13" rx="3" ry="4.5" />
+        <ellipse cx="80" cy="27" rx="3" ry="4.5" />
+        <ellipse cx="73" cy="20" rx="4.5" ry="3" />
+        <ellipse cx="87" cy="20" rx="4.5" ry="3" />
+      </g>
+    )
+  }
+  {
+    badge === 'herb' && (
+      <g fill="#fff">
+        <ellipse cx="80" cy="16" rx="3" ry="7" />
+        <ellipse cx="74" cy="22" rx="3" ry="6.5" transform="rotate(-28 74 22)" />
+        <ellipse cx="86" cy="22" rx="3" ry="6.5" transform="rotate(28 86 22)" />
+      </g>
+    )
+  }
+  {
+    badge === 'paw' && (
+      <g fill="#fff">
+        <ellipse cx="80" cy="24" rx="6.5" ry="5.5" />
+        <ellipse cx="72" cy="15" rx="2.6" ry="3.4" />
+        <ellipse cx="78" cy="12" rx="2.6" ry="3.4" />
+        <ellipse cx="84" cy="13" rx="2.6" ry="3.4" />
+        <ellipse cx="89" cy="17" rx="2.6" ry="3.4" />
+      </g>
+    )
+  }
+
+  <!-- can top rim -->
+  <ellipse cx="80" cy="60" rx="35" ry="10" fill="#c9d0d3" stroke="#9fabaf" stroke-width="1.5" />
+  <ellipse cx="80" cy="58" rx="27" ry="5.5" fill="#e6e9ea" />
+  <ellipse cx="86" cy="57" rx="6" ry="3" fill="none" stroke="#9fabaf" stroke-width="1.5" />
+
+  <!-- can body -->
+  <path
+    d="M45 60 L45 165 C45 172, 115 172, 115 165 L115 60"
+    fill="#f2efe6"
+    stroke="#d8d2bf"
+    stroke-width="1.5"
+  />
+
+  <!-- label band -->
+  <rect x="45" y="98" width="70" height="46" fill={accentHex} />
+  <rect x="45" y="98" width="70" height="4" fill="#000" opacity="0.08" />
+  <rect x="45" y="140" width="70" height="4" fill="#000" opacity="0.08" />
+  <text
+    x="80"
+    y="125"
+    text-anchor="middle"
+    font-size="11"
+    font-weight="700"
+    fill="#fff"
+    letter-spacing="0.02em"
+    font-family="ui-sans-serif, system-ui, sans-serif"
+  >
+    {label}
+  </text>
+
+  <!-- can base -->
+  <path d="M45 165 C45 172, 115 172, 115 165 L115 168 C115 175, 45 175, 45 168 Z" fill="#d8d2bf" />
+</svg>

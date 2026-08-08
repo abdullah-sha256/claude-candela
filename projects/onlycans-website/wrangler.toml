@@ -1,0 +1,37 @@
+# Cloudflare Workers config for the OnlyCans wholesale site.
+#
+# This is a static Astro build served by Workers static assets — there is no
+# Worker script, just `assets`, so no `main` entry is needed.
+#
+# ── Connecting the repo (Workers Builds) ─────────────────────────────────────
+# In the Cloudflare dashboard: Workers & Pages → Create → Connect to Git, pick
+# abdullah-sha256/claude-candela, then set:
+#
+#   Worker name      onlycans-website     (MUST match `name` below, or builds fail)
+#   Root directory   projects/onlycans-website   (monorepo subdirectory)
+#   Build command    npm run build
+#   Deploy command   npx wrangler deploy  (this is the default)
+#
+# Cloudflare runs those from the root directory, so it finds this file. `dist/`
+# is gitignored on purpose — Workers Builds produces it during the build.
+#
+# Non-production branches default to `npx wrangler versions upload`, which
+# publishes a preview version without touching production.
+#
+# ⚠️ Two staging guards (public/_headers, public/robots.txt) block search
+# indexing on purpose — see README.md's "Not launch-ready" section. Remove
+# both before pointing a real domain at this.
+
+name = "onlycans-website"
+compatibility_date = "2026-08-08"
+
+[assets]
+directory = "./dist"
+
+# Single static page, no 404.html — return real 404s rather than serving
+# index.html for unknown paths (which would let crawlers index unlimited
+# duplicate URLs under "single-page-application" mode).
+not_found_handling = "none"
+
+[observability]
+enabled = true

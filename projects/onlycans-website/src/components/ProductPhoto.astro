@@ -1,0 +1,51 @@
+---
+/**
+ * Product photo, keyed by slug (see src/data/onlycans.ts). Falls back to the
+ * CanMock illustration for any slug without a photo — currently just
+ * "plant", since no can of that design has been shot. Mirrors the
+ * SKU-keyed pattern in the Candela site's ProductImage.astro.
+ */
+import { Image } from 'astro:assets'
+import CanMock from '@/components/CanMock.astro'
+import type { Product } from '@/data/onlycans'
+
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/products/*.{png,jpg,jpeg,webp}',
+  { eager: true }
+)
+const BY_SLUG = new Map(
+  Object.entries(modules).map(([path, mod]) => [
+    path.split('/').pop()!.replace(/\.[^.]+$/, ''),
+    mod.default,
+  ])
+)
+
+interface Props {
+  product: Product
+  badge: 'question' | 'flower' | 'herb' | 'paw'
+  class?: string
+}
+
+const { product, badge, class: className = '' } = Astro.props
+const photo = BY_SLUG.get(product.slug)
+---
+
+{
+  photo ? (
+    <Image
+      src={photo}
+      alt={`${product.name} — product photo`}
+      class={`object-contain ${className}`}
+      loading="lazy"
+      decoding="async"
+    />
+  ) : (
+    <CanMock
+      label={product.name.split(' ')[0]!}
+      name={product.name}
+      accent={product.accent}
+      badge={badge}
+      class={className}
+    />
+  )
+}

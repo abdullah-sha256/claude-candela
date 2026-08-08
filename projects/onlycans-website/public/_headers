@@ -1,0 +1,10 @@
+# ⚠️ STAGING ONLY — DELETE THIS FILE BEFORE LAUNCHING ON shoponlycans.ca
+#
+# This build uses mock product illustrations, not real photography, and the
+# real SKU codes/UPCs aren't wired in. A staging URL is unlisted but publicly
+# reachable, so without this it could get indexed and surface under the
+# OnlyCans brand name before the real site is ready. Leaving this in place on
+# the real launch would keep the real site out of Google entirely — see
+# projects/website (Candela) README for the same lesson learned there.
+/*
+  X-Robots-Tag: noindex, nofollow

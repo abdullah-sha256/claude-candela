@@ -1,0 +1,113 @@
+---
+import { CONTACT_EMAIL } from '@/data/onlycans'
+---
+
+<!--
+  Static-site inquiry form: composes a pre-filled email in the visitor's own
+  mail client rather than posting anywhere, since there is no backend. To
+  collect submissions server-side instead, point `action` at Formspree /
+  Netlify Forms and delete the submit-handler script below.
+-->
+<form id="inquiry-form" class="grid gap-5 sm:grid-cols-2">
+  <div class="grid gap-2">
+    <label for="business" class="text-sm font-medium text-ink">Business name</label>
+    <input
+      id="business"
+      name="business"
+      required
+      autocomplete="organization"
+      class="rounded-md border border-kraft bg-white px-3 py-2 text-sm text-ink outline-none focus:border-sprout focus:ring-1 focus:ring-sprout"
+    />
+  </div>
+
+  <div class="grid gap-2">
+    <label for="name" class="text-sm font-medium text-ink">Your name</label>
+    <input
+      id="name"
+      name="name"
+      required
+      autocomplete="name"
+      class="rounded-md border border-kraft bg-white px-3 py-2 text-sm text-ink outline-none focus:border-sprout focus:ring-1 focus:ring-sprout"
+    />
+  </div>
+
+  <div class="grid gap-2">
+    <label for="email" class="text-sm font-medium text-ink">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      autocomplete="email"
+      class="rounded-md border border-kraft bg-white px-3 py-2 text-sm text-ink outline-none focus:border-sprout focus:ring-1 focus:ring-sprout"
+    />
+  </div>
+
+  <div class="grid gap-2">
+    <label for="location" class="text-sm font-medium text-ink">City / Province</label>
+    <input
+      id="location"
+      name="location"
+      placeholder="Toronto, ON"
+      required
+      class="rounded-md border border-kraft bg-white px-3 py-2 text-sm text-ink outline-none focus:border-sprout focus:ring-1 focus:ring-sprout"
+    />
+  </div>
+
+  <div class="grid gap-2 sm:col-span-2">
+    <label for="storeType" class="text-sm font-medium text-ink">Store type</label>
+    <input
+      id="storeType"
+      name="storeType"
+      placeholder="Gift shop, garden centre, pet store, museum shop…"
+      class="rounded-md border border-kraft bg-white px-3 py-2 text-sm text-ink outline-none focus:border-sprout focus:ring-1 focus:ring-sprout"
+    />
+  </div>
+
+  <div class="grid gap-2 sm:col-span-2">
+    <label for="message" class="text-sm font-medium text-ink">Anything else?</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      placeholder="Quantities you're thinking, timing, or questions about the programme."
+      class="rounded-md border border-kraft bg-white px-3 py-2 text-sm text-ink outline-none focus:border-sprout focus:ring-1 focus:ring-sprout"
+    ></textarea>
+  </div>
+
+  <div class="sm:col-span-2">
+    <button type="submit" class="btn btn-accent w-full sm:w-auto">Request the Wholesale Order Form</button>
+    <p id="inquiry-status" aria-live="polite" class="mt-3 text-sm text-ink-soft">
+      Opens a pre-filled email in your mail app — nothing is submitted from this page.
+    </p>
+  </div>
+</form>
+
+<script define:vars={{ CONTACT_EMAIL }}>
+  const form = document.getElementById('inquiry-form')
+  const status = document.getElementById('inquiry-status')
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const data = new FormData(form)
+    const get = (k) => String(data.get(k) ?? '').trim()
+
+    const body = [
+      `Business: ${get('business')}`,
+      `Contact: ${get('name')}`,
+      `Email: ${get('email')}`,
+      `Location: ${get('location')}`,
+      `Store type: ${get('storeType') || '—'}`,
+      '',
+      get('message') || 'Please send the current Wholesale Order Form.',
+    ].join('\n')
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      `Wholesale enquiry — ${get('business') || 'New stockist'}`
+    )}&body=${encodeURIComponent(body)}`
+
+    if (status) {
+      status.textContent = `Your mail app should have opened with the message ready to send. If it didn't, email ${CONTACT_EMAIL} directly.`
+    }
+  })
+</script>

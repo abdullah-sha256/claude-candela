@@ -1,0 +1,58 @@
+---
+interface Props {
+  icon: 'bilingual' | 'clock' | 'barcode' | 'seed' | 'support'
+  class?: string
+}
+const { icon, class: className = 'h-6 w-6' } = Astro.props
+const common = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '1.75',
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+}
+---
+
+{
+  icon === 'bilingual' && (
+    <svg {...common} class={className}>
+      <path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z" />
+      <path d="M7 9h6M7 12h4" />
+    </svg>
+  )
+}
+{
+  icon === 'clock' && (
+    <svg {...common} class={className}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 3" />
+    </svg>
+  )
+}
+{
+  icon === 'barcode' && (
+    <svg {...common} class={className}>
+      <path d="M3 5v14M7 5v14M11 5v14M13 5v14M17 5v14M21 5v14" stroke-width="1.5" />
+    </svg>
+  )
+}
+{
+  icon === 'seed' && (
+    <svg {...common} class={className}>
+      <path d="M12 2c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z" />
+      <path d="M12 22v-9" />
+    </svg>
+  )
+}
+{
+  icon === 'support' && (
+    <svg {...common} class={className}>
+      <path d="M4 13a8 8 0 0 1 16 0" />
+      <rect x="2" y="13" width="5" height="7" rx="1.5" />
+      <rect x="17" y="13" width="5" height="7" rx="1.5" />
+      <path d="M20 20a4 4 0 0 1-4 3h-2" />
+    </svg>
+  )
+}
