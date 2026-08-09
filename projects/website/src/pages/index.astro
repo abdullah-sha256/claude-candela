@@ -58,37 +58,42 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
 
   <main id="main">
     <!-- ============ HERO ============ -->
-    <section class="relative overflow-hidden px-6 pb-20 pt-32 md:pb-28 md:pt-44">
+    <section class="px-6 pb-16 pt-32 md:pb-24 md:pt-48">
       <div class="container-x">
         <p class="eyebrow">Wholesale · Toronto, Canada</p>
         <h1
-          class="mt-5 max-w-3xl text-balance text-4xl font-light leading-[1.08] tracking-tight text-ink sm:text-5xl md:text-6xl"
+          class="mt-6 max-w-4xl text-balance text-5xl font-light leading-[1.02] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          Candles that earn their shelf space.
+          Candles that <span class="display-accent">earn</span> their shelf space.
         </h1>
-        <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft">
-          Candela is a Toronto candle brand built for modern gifting and strong visual
-          merchandising — {SKU_COUNT} SKUs across {COLLECTION_COUNT} collections, poured in Canada,
-          with no per-scent minimums — build your own case.
-        </p>
 
-        <div class="mt-9 flex flex-wrap items-center gap-3">
-          <a href="#inquiry" class={buttonVariants({ variant: 'accent', size: 'lg' })}>
-            Request a line sheet
-          </a>
-          <a href="#collections" class={buttonVariants({ variant: 'outline', size: 'lg' })}>
-            See the range
-          </a>
+        <div class="mt-12 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <p class="max-w-xl text-pretty text-lg leading-relaxed text-ink-soft">
+            Candela is a Toronto candle brand built for modern gifting and strong visual
+            merchandising — {SKU_COUNT} SKUs across {COLLECTION_COUNT} collections, poured in
+            Canada, with no per-scent minimums.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#inquiry" class={buttonVariants({ variant: 'accent', size: 'lg' })}>
+              Request a line sheet
+            </a>
+            <a href="#collections" class={buttonVariants({ variant: 'outline', size: 'lg' })}>
+              See the range
+            </a>
+          </div>
         </div>
 
-        <dl class="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-sand bg-sand md:grid-cols-4">
+        <dl class="mt-16 grid grid-cols-2 border-t border-ink/60 md:grid-cols-4">
           {
             stats.map((s) => (
-              <div class="bg-parchment px-5 py-6">
+              <div class="border-b border-line py-6 pr-6 md:border-b-0">
                 <dt class="sr-only">{s.label}</dt>
                 <dd>
-                  <span class="font-display text-3xl text-ink">{s.value}</span>
-                  <span class="mt-1 block text-xs uppercase tracking-[0.12em] text-ink-soft">
+                  <span class="font-display text-4xl font-light text-ink md:text-5xl">
+                    {s.value}
+                  </span>
+                  <span class="mt-2 block text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                     {s.label}
                   </span>
                 </dd>
@@ -100,42 +105,46 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     </section>
 
     <!-- ============ WHY ============ -->
-    <section id="why" class="section bg-parchment-deep">
+    <section id="why" class="section border-t border-line">
       <div class="container-x">
-        <p class="eyebrow">Why buyers carry it</p>
-        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
-          The range is designed backwards from the shelf.
-        </h2>
+        <div class="grid gap-12 lg:grid-cols-[0.9fr_2fr]">
+          <div>
+            <p class="eyebrow">Why buyers carry it</p>
+            <h2 class="mt-4 text-3xl font-light leading-tight text-ink md:text-4xl">
+              Designed backwards from the <span class="display-accent">shelf</span>.
+            </h2>
+          </div>
 
-        <div class="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
-          {
-            reasons.map((r, i) => (
-              <div class="border-t border-sand pt-6">
-                <span class="font-display text-sm text-brass">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 class="mt-3 text-xl text-ink">{r.title}</h3>
-                <p class="mt-3 text-pretty leading-relaxed text-ink-soft">{r.body}</p>
-              </div>
-            ))
-          }
+          <div class="grid gap-x-14 gap-y-12 sm:grid-cols-2">
+            {
+              reasons.map((r, i) => (
+                <div>
+                  <span class="font-display text-5xl font-light text-terracotta/70">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 class="mt-4 text-xl text-ink">{r.title}</h3>
+                  <p class="mt-3 text-pretty leading-relaxed text-ink-soft">{r.body}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ============ FORMATS ============ -->
-    <section class="section">
+    <section class="section border-t border-line bg-paper-deep">
       <div class="container-x">
         <p class="eyebrow">Formats</p>
         <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
           Three vessels, three price tiers.
         </h2>
 
-        <div class="mt-14 grid gap-8 md:grid-cols-3">
+        <div class="mt-14 grid gap-x-10 gap-y-14 md:grid-cols-3">
           {
             byFormat.map((f) => (
-              <div class="rounded-lg border border-sand bg-card p-8">
-                <div class="photo-tile aspect-[4/3] p-4">
+              <div>
+                <div class="photo-tile aspect-[4/3] p-5">
                   <ProductImage
                     sku={f.heroSku.code}
                     name={f.heroSku.name}
@@ -145,12 +154,18 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
                     class="h-full w-full"
                   />
                 </div>
-                <h3 class="mt-6 text-xl text-espresso">{f.name}</h3>
-                <p class="mt-1 text-xs uppercase tracking-[0.12em] text-brass">{f.spec}</p>
-                <p class="mt-4 text-sm leading-relaxed text-espresso-soft">{f.blurb}</p>
-                <p class="mt-5 border-t border-sand pt-4 text-sm text-espresso-soft">
-                  {f.collections.map((c) => c.name).join(' · ')}
-                </p>
+                <div class="mt-6 border-t border-ink/60 pt-5">
+                  <div class="flex items-baseline justify-between gap-4">
+                    <h3 class="text-2xl font-light text-ink">{f.name}</h3>
+                    <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-soft">
+                      {f.spec}
+                    </p>
+                  </div>
+                  <p class="mt-4 text-sm leading-relaxed text-ink-soft">{f.blurb}</p>
+                  <p class="mt-4 text-xs uppercase tracking-[0.12em] text-terracotta">
+                    {f.collections.map((c) => c.name).join(' · ')}
+                  </p>
+                </div>
               </div>
             ))
           }
@@ -159,85 +174,102 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     </section>
 
     <!-- ============ COLLECTIONS ============ -->
-    <section id="collections" class="section bg-parchment-deep">
+    <section id="collections" class="section border-t border-line">
       <div class="container-x">
-        <p class="eyebrow">The range</p>
-        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
-          {COLLECTION_COUNT} collections, {SKU_COUNT} scents.
-        </h2>
-        <p class="mt-5 max-w-xl leading-relaxed text-ink-soft">
-          Every collection ships in mix-and-match cases of 12. Build an assortment around one,
-          or run the full wall.
-        </p>
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p class="eyebrow">The range</p>
+            <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
+              {COLLECTION_COUNT} collections, <span class="display-accent">{SKU_COUNT}</span> scents.
+            </h2>
+          </div>
+          <p class="max-w-sm text-sm leading-relaxed text-ink-soft">
+            Every collection ships in mix-and-match cases of 12. Build an assortment around
+            one, or run the full wall.
+          </p>
+        </div>
 
-        <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-16 flex flex-col gap-20 md:gap-24">
           {
-            COLLECTIONS.map((c) => (
-              <article class="flex flex-col overflow-hidden rounded-lg border border-sand bg-card transition-colors hover:border-brass/50">
-                <div class="photo-tile aspect-[3/1] w-full">
-                  <CollectionPhoto slug={c.slug} name={c.name} class="h-full w-full" />
-                </div>
-
-                <div class="flex flex-1 flex-col p-7">
-                <h3 class="text-xl text-espresso">{c.name}</h3>
-                <p class="mt-1 text-xs uppercase tracking-[0.12em] text-espresso-soft">
-                  {c.skus.length > 1 && `${c.skus.length} scents · `}
-                  {FORMATS[c.format].name}
-                </p>
-
-                <p class="mt-5 text-sm leading-relaxed text-espresso-soft">{c.description}</p>
-
-                <p class="mt-4 border-l-2 border-brass/40 pl-3 text-sm italic text-espresso-soft">
-                  {c.pitch}
-                </p>
-
-                <div class="mt-5 border-t border-sand pt-4">
-                  <span class="text-lg text-espresso">${c.msrp.toFixed(2)}</span>
-                  <span class="text-xs uppercase tracking-[0.12em] text-espresso-soft">MSRP</span>
-                  <p class="mt-1 text-xs text-espresso-soft">
-                    <a href="#inquiry" class="underline decoration-dotted hover:text-brass">
-                      Email us for wholesale pricing
-                    </a>
-                  </p>
-                </div>
-                <p class="mt-1 text-xs text-espresso-soft">{c.casePack}</p>
-
-                {/* Single-product collections (Atelier, Pop) show the product on
-                    its own — a one-tile grid captioned with the collection name
-                    would just repeat the heading. */}
-                {c.skus.length === 1 ? (
-                  <div class="mt-6 border-t border-sand pt-6">
-                    <div class="photo-tile mx-auto aspect-square w-2/3 p-3">
-                      <ProductImage
-                        sku={c.skus[0]!.code}
-                        name={c.name}
-                        format={c.format}
-                        widths={[240, 480, 720]}
-                        sizes="(min-width: 1024px) 220px, (min-width: 768px) 200px, 55vw"
-                        class="h-full w-full"
-                      />
-                    </div>
+            COLLECTIONS.map((c, i) => (
+              <article class="grid items-start gap-8 border-t border-ink/60 pt-10 lg:grid-cols-2 lg:gap-14">
+                <div class:list={['lg:sticky lg:top-24', i % 2 === 1 && 'lg:order-2']}>
+                  <div class="photo-tile aspect-[16/9] w-full">
+                    <CollectionPhoto slug={c.slug} name={c.name} class="h-full w-full" />
                   </div>
-                ) : (
-                  <ul class="mt-6 grid grid-cols-3 gap-x-3 gap-y-5 border-t border-sand pt-6">
-                    {c.skus.map((s) => (
-                      <li>
-                        <div class="photo-tile aspect-square p-2">
-                          <ProductImage
-                            sku={s.code}
-                            name={s.name}
-                            format={c.format}
-                            sizes="(min-width: 1024px) 100px, (min-width: 768px) 140px, 26vw"
-                            class="h-full w-full"
-                          />
-                        </div>
-                        <p class="mt-2 text-center text-xs leading-snug text-espresso-soft">
-                          {s.name}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                </div>
+
+                <div class:list={[i % 2 === 1 && 'lg:order-1']}>
+                  <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                    <h3 class="text-3xl font-light text-ink md:text-4xl">{c.name}</h3>
+                    <p class="text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
+                      {c.skus.length > 1 && `${c.skus.length} scents · `}
+                      {FORMATS[c.format].name}
+                    </p>
+                  </div>
+
+                  <p class="mt-5 leading-relaxed text-ink-soft">{c.description}</p>
+
+                  <p class="mt-4 font-display text-lg italic leading-relaxed text-terracotta">
+                    {c.pitch}
+                  </p>
+
+                  <div class="mt-6 flex flex-wrap items-baseline gap-x-8 gap-y-2 border-t border-line pt-5">
+                    <p>
+                      <span class="font-display text-2xl font-light text-ink">
+                        ${c.msrp.toFixed(2)}
+                      </span>
+                      <span class="ml-2 text-[0.7rem] uppercase tracking-[0.14em] text-ink-soft">
+                        MSRP
+                      </span>
+                    </p>
+                    <p class="text-xs text-ink-soft">{c.casePack}</p>
+                    <p class="text-xs text-ink-soft">
+                      <a
+                        href="#inquiry"
+                        class="underline decoration-dotted underline-offset-4 hover:text-terracotta"
+                      >
+                        Email us for wholesale pricing
+                      </a>
+                    </p>
+                  </div>
+
+                  {/* Single-product collections (Atelier, Pop) show the product on
+                      its own — a one-tile grid captioned with the collection name
+                      would just repeat the heading. */}
+                  {c.skus.length === 1 ? (
+                    <div class="mt-8">
+                      <div class="photo-tile aspect-square w-40 p-3">
+                        <ProductImage
+                          sku={c.skus[0]!.code}
+                          name={c.name}
+                          format={c.format}
+                          widths={[240, 480, 720]}
+                          sizes="160px"
+                          class="h-full w-full"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <ul class="mt-8 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-5">
+                      {c.skus.map((s) => (
+                        <li>
+                          <div class="photo-tile aspect-square p-2">
+                            <ProductImage
+                              sku={s.code}
+                              name={s.name}
+                              format={c.format}
+                              sizes="(min-width: 640px) 110px, 28vw"
+                              class="h-full w-full"
+                            />
+                          </div>
+                          <p class="mt-2 text-center text-xs leading-snug text-ink-soft">
+                            {s.name}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </article>
             ))
@@ -247,16 +279,16 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     </section>
 
     <!-- ============ WHOLESALE TERMS ============ -->
-    <section id="wholesale" class="section bg-wick text-ink">
+    <section id="wholesale" class="section bg-wick text-cream">
       <div class="container-x grid gap-16 lg:grid-cols-2">
         <div>
-          <p class="text-xs font-medium uppercase tracking-[0.18em] text-brass-bright">
+          <p class="text-xs font-medium uppercase tracking-[0.22em] text-terracotta-bright">
             The programme
           </p>
           <h2 class="mt-4 text-3xl font-light leading-tight md:text-4xl">
-            Straightforward to stock.
+            Straightforward to <span class="font-display italic">stock</span>.
           </h2>
-          <p class="mt-6 max-w-md text-pretty leading-relaxed text-ink/70">
+          <p class="mt-6 max-w-md text-pretty leading-relaxed text-cream/70">
             A $250 opening order, no reorder minimum, and no exclusivity strings. Request the
             line sheet below for full SKU-level detail and current stock.
           </p>
@@ -266,12 +298,12 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
           </a>
         </div>
 
-        <dl class="divide-y divide-ink/15 border-y border-ink/15">
+        <dl class="divide-y divide-cream/15 border-y border-cream/15">
           {
             WHOLESALE_TERMS.map((t) => (
               <div class="flex items-baseline justify-between gap-8 py-4">
-                <dt class="text-xs uppercase tracking-[0.14em] text-ink/50">{t.term}</dt>
-                <dd class="text-right text-ink">{t.detail}</dd>
+                <dt class="text-xs uppercase tracking-[0.14em] text-cream/50">{t.term}</dt>
+                <dd class="text-right text-cream">{t.detail}</dd>
               </div>
             ))
           }
@@ -285,31 +317,31 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
         <div>
           <p class="eyebrow">Get in touch</p>
           <h2 class="mt-4 text-3xl font-light leading-tight text-ink md:text-4xl">
-            Request the line sheet.
+            Request the <span class="display-accent">line sheet</span>.
           </h2>
           <p class="mt-6 text-pretty leading-relaxed text-ink-soft">
             Tell us a little about your shop and we will send the current wholesale line sheet
             with pricing, minimums, and available stock.
           </p>
-          <p class="mt-8 border-t border-sand pt-6 text-sm text-ink-soft">
+          <p class="mt-8 border-t border-line pt-6 text-sm text-ink-soft">
             Prefer email?{' '}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              class="text-brass underline underline-offset-4 hover:text-brass-bright"
+              class="text-terracotta underline underline-offset-4 hover:text-terracotta-bright"
             >
               {CONTACT_EMAIL}
             </a>
           </p>
         </div>
 
-        <div class="rounded-lg border border-sand bg-parchment-deep p-7 md:p-9">
+        <div class="border-t border-ink/60 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
           <InquiryForm client:visible />
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-sand px-6 py-12">
+  <footer class="border-t border-line px-6 py-12">
     <div class="container-x flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
       <div>
         <p class="wordmark text-base text-ink">candēla</p>

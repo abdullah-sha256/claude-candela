@@ -8,12 +8,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-espresso/90',
-        accent: 'bg-espresso text-ink hover:bg-espresso/90',
+        accent: 'bg-ink text-cream hover:bg-ink/90',
         outline:
-          'border border-espresso/25 bg-transparent text-espresso hover:bg-espresso hover:text-ink',
-        ghost: 'text-espresso hover:bg-espresso/5',
+          'border border-ink/30 bg-transparent text-ink hover:bg-ink hover:text-cream',
+        ghost: 'text-ink hover:bg-ink/5',
         onDark:
-          'border border-ink/30 bg-transparent text-ink hover:bg-ink hover:text-espresso',
+          'border border-cream/30 bg-transparent text-cream hover:bg-cream hover:text-ink',
       },
       size: {
         default: 'h-11 px-6',

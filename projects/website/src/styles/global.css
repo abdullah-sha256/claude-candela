@@ -4,73 +4,72 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   CANDELA — DESIGN SYSTEM (PLACEHOLDER)
+   CANDELA — DESIGN SYSTEM
    ------------------------------------------------------------
-   Everything visual is defined here. When the real Candela
-   design system arrives, replace the values in :root and the
-   two --font-* tokens; no component file should need touching.
-
-   Palette intent: warm candlelight. Parchment paper base,
-   espresso ink, brass flame accent, and a near-black "wick"
-   tone for high-contrast sections.
+   Editorial / magazine direction (2026-08-09 redesign, per the
+   user): warm cream paper, near-black ink, oversized Fraunces
+   display type, hairline rules instead of boxed cards, and a
+   muted terracotta used only as small punctuation (numerals,
+   italic accents, links) — never as big filled surfaces. The
+   earlier mauve/cream palette and the boxed-card layout were
+   both retired in this pass.
    ============================================================ */
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
   /* --- Brand ramp ------------------------------------------ */
-  /* Base + text per the user (2026-08-09): #94857b / #ede8da, applied as
-     the page background and the text that sits directly on it. --espresso
-     (dark ink) is kept unchanged and deliberately NOT touched — it's still
-     used inside the white bg-card surfaces (Formats cards, collection
-     cards), where cream text would be unreadable. See the --ink comment
-     below for how the two coexist. */
-  --parchment: #94857b; /* page base */
-  --parchment-deep: #847362; /* alternating section base — darker mauve, not a hue swap */
-  --sand: #b2a89c; /* borders, rules, dividers — lightened from the original pale
-                       beige so it stays visible against the new mauve base */
-  --photo-bg: #f6f3ee; /* tile behind product shots — unaffected, sits on white cards */
-  --espresso: #241c17; /* dark ink — bg-card surfaces only, see note above */
-  --espresso-soft: #6a5c51;
-  --ink: #ede8da; /* text sitting directly on the mauve base/parchment-deep, and
-                      light text on the dark --wick section (replaces the old
-                      dual-purpose use of --parchment for that role) */
-  --ink-soft: #d3c8b8; /* secondary text on the mauve base */
-  --brass: #a66a32; /* flame accent — CTAs, marks */
-  --brass-bright: #c8873f; /* hover / highlight */
-  --wick: #171310; /* dark section base */
-  --wordmark-bg: #94857b; /* logo chip base — unused since the wordmark reverted to
-                              plain text, kept in case that treatment comes back */
-  --wordmark-text: #ede8da;
+  --paper: #f6f1e7; /* page base — warm cream */
+  --paper-deep: #ede5d4; /* alternating section base */
+  --line: #d8cdb8; /* hairline rules, borders */
+  --photo-bg: #f6f3ee; /* tile behind product shots — matches the photos' own
+                           off-white sweep so the seam disappears */
+  --ink: #211a13; /* primary text */
+  --ink-soft: #6d6052; /* secondary text */
+  --terracotta: #9c4a2f; /* accent — small punctuation only */
+  --terracotta-bright: #b85c3a; /* hover */
+  --sage: #7d8471; /* quiet secondary accent */
+  --wick: #191410; /* dark section base */
+  --cream: #f2ead9; /* light text on the dark --wick section */
+
+  /* Legacy aliases — a few components still reference these names.
+     They now point at the editorial ramp so nothing renders stale. */
+  --parchment: var(--paper);
+  --parchment-deep: var(--paper-deep);
+  --sand: var(--line);
+  --espresso: var(--ink);
+  --espresso-soft: var(--ink-soft);
+  --brass: var(--terracotta);
+  --brass-bright: var(--terracotta-bright);
 
   /* --- shadcn semantic tokens ------------------------------ */
-  --background: var(--parchment);
+  --background: var(--paper);
   --foreground: var(--ink);
 
   --card: #ffffff;
-  --card-foreground: var(--espresso);
+  --card-foreground: var(--ink);
 
   --popover: #ffffff;
-  --popover-foreground: var(--espresso);
+  --popover-foreground: var(--ink);
 
-  --primary: var(--espresso);
-  --primary-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
 
-  --secondary: var(--parchment-deep);
-  --secondary-foreground: var(--espresso);
+  --secondary: var(--paper-deep);
+  --secondary-foreground: var(--ink);
 
-  --muted: var(--parchment-deep);
-  --muted-foreground: var(--espresso-soft);
+  --muted: var(--paper-deep);
+  --muted-foreground: var(--ink-soft);
 
-  --accent: var(--brass);
+  --accent: var(--terracotta);
   --accent-foreground: #ffffff;
 
   --destructive: #9b2c2c;
   --destructive-foreground: #ffffff;
 
-  --border: var(--sand);
-  --input: var(--sand);
-  --ring: var(--brass);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--terracotta);
 }
 
 @theme inline {
@@ -94,18 +93,27 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand ramp exposed as utilities: bg-parchment, text-brass, etc. */
+  /* Brand ramp exposed as utilities: bg-paper, text-ink, etc. */
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-bright: var(--terracotta-bright);
+  --color-sage: var(--sage);
+  --color-wick: var(--wick);
+  --color-cream: var(--cream);
+  --color-photo-bg: var(--photo-bg);
+
+  /* Legacy utility names still referenced in a few components. */
   --color-parchment: var(--parchment);
   --color-parchment-deep: var(--parchment-deep);
   --color-sand: var(--sand);
   --color-espresso: var(--espresso);
   --color-espresso-soft: var(--espresso-soft);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
   --color-brass: var(--brass);
   --color-brass-bright: var(--brass-bright);
-  --color-wick: var(--wick);
-  --color-photo-bg: var(--photo-bg);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -142,7 +150,7 @@
   }
 
   ::selection {
-    background: var(--brass);
+    background: var(--terracotta);
     color: #fff;
   }
 }
@@ -159,14 +167,7 @@
      needed constant hand-tuning. Playfair Display centres the real ē
      glyph correctly on its own — same high-contrast editorial feel as
      Fraunces, so the wordmark doesn't read as a mismatched font next to
-     the headings, but without fighting its diacritic placement.
-
-     Plain text, transparent background — per the user's follow-up
-     screenshot of the logo on white (2026-08-09), which superseded the
-     mauve/cream colour-chip treatment from the previous pass. Colour
-     comes from whatever text-colour utility the caller passes (both call
-     sites use text-ink, since the wordmark sits on the site's mauve
-     --parchment base), same as any other text. */
+     the headings, but without fighting its diacritic placement. */
   .wordmark {
     @apply font-wordmark lowercase;
     letter-spacing: 0.34em;
@@ -175,15 +176,15 @@
 
   /* Small uppercase label used above section headings. */
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.18em] text-espresso;
+    @apply text-xs font-medium uppercase tracking-[0.22em] text-terracotta;
   }
 
   /* Product photos sit on an off-white sweep, so they get their own tile
-     rather than sitting directly on a white card — otherwise the sweep reads
-     as a dirty rectangle. Sample the actual backdrop from a delivered photo
-     and set --photo-bg to match; the seam then disappears entirely. */
+     rather than sitting directly on the page — otherwise the sweep reads
+     as a dirty rectangle. --photo-bg is close enough to --paper that the
+     tile reads as a subtle plate, not a box. */
   .photo-tile {
-    @apply flex items-center justify-center overflow-hidden rounded-md;
+    @apply flex items-center justify-center overflow-hidden rounded-sm;
     background: var(--photo-bg);
   }
 
@@ -193,6 +194,13 @@
 
   .container-x {
     @apply mx-auto w-full max-w-6xl;
+  }
+
+  /* Editorial display headline — oversized Fraunces with an optional
+     italic accent span (`.display-accent`). */
+  .display-accent {
+    @apply font-display italic text-terracotta;
+    font-weight: 400;
   }
 }
 
