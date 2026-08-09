@@ -45,7 +45,7 @@ export function Nav() {
         className="container-x flex h-16 items-center justify-between px-6"
         aria-label="Primary"
       >
-        <a href="#main" className="wordmark text-lg text-espresso">
+        <a href="#main" className="wordmark text-lg">
           candēla
         </a>
 

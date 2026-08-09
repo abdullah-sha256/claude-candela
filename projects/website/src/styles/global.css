@@ -28,6 +28,8 @@
   --brass: #a66a32; /* flame accent — CTAs, marks */
   --brass-bright: #c8873f; /* hover / highlight */
   --wick: #171310; /* dark section base */
+  --wordmark-bg: #94857b; /* logo chip base — from the user's shared logo swatch */
+  --wordmark-text: #ede8da; /* logo chip text — from the same swatch */
 
   /* --- shadcn semantic tokens ------------------------------ */
   --background: var(--parchment);
@@ -143,11 +145,22 @@
      needed constant hand-tuning. Playfair Display centres the real ē
      glyph correctly on its own — same high-contrast editorial feel as
      Fraunces, so the wordmark doesn't read as a mismatched font next to
-     the headings, but without fighting its diacritic placement. */
+     the headings, but without fighting its diacritic placement.
+
+     Styled as a colour chip per the user's shared logo swatch (mauve base,
+     cream text) rather than plain text — the chip's own background/text
+     colour replace whatever text colour utility the caller passes, since
+     the chip needs to look the same whether it's sitting on the light nav
+     or the dark footer. */
   .wordmark {
-    @apply font-wordmark lowercase;
+    @apply font-wordmark lowercase inline-flex items-center rounded-md;
     letter-spacing: 0.34em;
     font-weight: 500;
+    background: var(--wordmark-bg);
+    color: var(--wordmark-text) !important;
+    padding: 0.35em 0.9em 0.3em 1.05em; /* extra left padding: optically centre the
+                                            letterspaced text, which otherwise reads
+                                            as right-of-centre in its own box */
   }
 
   /* Small uppercase label used above section headings. */
