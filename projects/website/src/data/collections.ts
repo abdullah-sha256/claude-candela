@@ -219,9 +219,13 @@ export const COLLECTIONS: Collection[] = [
     format: 'jar',
     description:
       'A timeless winter collection built for holiday gifting, festive window displays, and effortless seasonal merchandising.',
-    pitch: 'Q4 volume driver on the familiar jar format, priced above the core tier.',
-    msrp: 28,
-    wholesale: 14,
+    pitch: 'Q4 volume driver on the familiar jar format, priced at the core tier.',
+    // Catalogue and candela_drive_context.md both say $28/$14 (the
+    // Intentions tier). User correction (2026-08-08): Winter is core-tier
+    // pricing like Home/Moments/Travel/Kawaii, not premium. Don't
+    // "fix" this back to match the catalogue.
+    msrp: 25,
+    wholesale: 12.5,
     casePack: '12 units per case — mix and match scents freely within the case',
     skus: [
       { code: 'HD002', name: 'Winter Parlour' },

@@ -64,9 +64,9 @@ Candela is a Toronto-based candle brand designed for modern gifting, strong visu
 | Candela Bar Holidays | CBH002 | Gingerbread Latte | Soda Can | 300 g | 35 | 17.5 | 627949460063 |
 | Candela Bar Holidays | CBH003 | Holiday Sangria | Soda Can | 300 g | 35 | 17.5 | 627949460056 |
 | Candela Bar Holidays | CBH004 | Candy Cane Cocoa | Soda Can | 300 g | 35 | 17.5 | 627949460070 |
-| Candela Winter | HD001 | Midnight Fir | Glass Jar | 198 g | 28 | 14 | 627949460445 |
-| Candela Winter | HD002 | Winter Parlour | Glass Jar | 198 g | 28 | 14 | 627949460438 |
-| Candela Winter | HD003 | Gilded Noel | Glass Jar | 198 g | 28 | 14 | 627949460421 |
+| Candela Winter | HD001 | Midnight Fir | Glass Jar | 198 g | 25 | 12.5 | 627949460445 |
+| Candela Winter | HD002 | Winter Parlour | Glass Jar | 198 g | 25 | 12.5 | 627949460438 |
+| Candela Winter | HD003 | Gilded Noel | Glass Jar | 198 g | 25 | 12.5 | 627949460421 |
 | Candela Rituals | RT001 | New Moon | Soda Can | 300 g | 37 | 18.5 | 627949460483 |
 | Candela Rituals | RT002 | Love Spell | Soda Can | 300 g | 37 | 18.5 | 627949460094 |
 | Candela Limited Edition | LE001 | Grinch **— now "Grinchmas" in Bar Holidays**; the site uses CBH005, which no source assigns. Needs a real code + UPC. | — | — | — | — | |
@@ -107,8 +107,10 @@ Candela is a Toronto-based candle brand designed for modern gifting, strong visu
 | Contact | contact@candelacanada.ca · candelacanada.ca · @candelacanada.ca · Toronto ON |
 
 **Core collection wholesale/MSRP pricing** (catalogue):
-- Home / Moments / Travel / Kawaii: MSRP $25 | Wholesale $12.50
-- Intentions / Winter: MSRP $28 | Wholesale $14.00
+- Home / Moments / Travel / Kawaii / Winter: MSRP $25 | Wholesale $12.50
+- Intentions: MSRP $28 | Wholesale $14.00
+  *(Winter was $28/$14 in the catalogue and this sheet — user correction,
+  2026-08-08: core-tier pricing like the rest of the jar line, not premium.)*
 - Bar / Bar Holidays: MSRP $35 | Wholesale $17.50
 - Rituals: MSRP $37 | Wholesale $18.50 *(sheet grouped it at $35/$17.50)*
 - Atelier / Pop reed diffusers: MSRP $48 | Wholesale $24.00
