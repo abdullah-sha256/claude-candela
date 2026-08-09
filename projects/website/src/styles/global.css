@@ -98,6 +98,9 @@
 
   --font-display: 'Fraunces', ui-serif, Georgia, serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Wordmark only — see the .wordmark comment below for why this isn't
+     just --font-display. */
+  --font-wordmark: 'Playfair Display', ui-serif, Georgia, serif;
 }
 
 @layer base {
@@ -131,31 +134,20 @@
 @layer components {
   /* The wordmark is set as letterspaced lowercase per the brand
      logo ("c a n d ē l a"). Swap for the real logo asset when it
-     lands in assets/brand/. */
-  .wordmark {
-    @apply font-display lowercase;
-    letter-spacing: 0.34em;
-    font-weight: 400;
-  }
+     lands in assets/brand/.
 
-  /* Fraunces' precomposed ē glyph draws its macron high and off-centre at
-     this weight/tracking — it reads as a stray dash floating in the gap
-     before the "l", not an accent sitting over the "e". Rather than fight
-     the font, the wordmark markup uses a plain "e" wrapped in this span and
-     the macron is drawn here instead, so it's always centred regardless of
-     font, size, or letter-spacing. */
-  .wordmark .macron-e {
-    position: relative;
-  }
-  .wordmark .macron-e::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0.34em;
-    width: 0.44em;
-    height: 0.06em;
-    background: currentColor;
-    transform: translateX(-50%);
+     Deliberately NOT --font-display (Fraunces): Fraunces' precomposed ē
+     glyph draws its macron high and off-centre at this weight/tracking —
+     it read as a stray dash floating in the gap before the "l", not an
+     accent sitting over the "e". A CSS-drawn replacement bar worked but
+     needed constant hand-tuning. Playfair Display centres the real ē
+     glyph correctly on its own — same high-contrast editorial feel as
+     Fraunces, so the wordmark doesn't read as a mismatched font next to
+     the headings, but without fighting its diacritic placement. */
+  .wordmark {
+    @apply font-wordmark lowercase;
+    letter-spacing: 0.34em;
+    font-weight: 500;
   }
 
   /* Small uppercase label used above section headings. */
