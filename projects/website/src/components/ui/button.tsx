@@ -10,10 +10,10 @@ const buttonVariants = cva(
         default: 'bg-primary text-primary-foreground hover:bg-espresso/90',
         accent: 'bg-brass text-white hover:bg-brass-bright',
         outline:
-          'border border-espresso/25 bg-transparent text-espresso hover:bg-espresso hover:text-parchment',
+          'border border-espresso/25 bg-transparent text-espresso hover:bg-espresso hover:text-ink',
         ghost: 'text-espresso hover:bg-espresso/5',
         onDark:
-          'border border-parchment/30 bg-transparent text-parchment hover:bg-parchment hover:text-espresso',
+          'border border-ink/30 bg-transparent text-ink hover:bg-ink hover:text-espresso',
       },
       size: {
         default: 'h-11 px-6',

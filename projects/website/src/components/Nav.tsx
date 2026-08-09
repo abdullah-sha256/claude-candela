@@ -45,7 +45,7 @@ export function Nav() {
         className="container-x flex h-16 items-center justify-between px-6"
         aria-label="Primary"
       >
-        <a href="#main" className="wordmark text-lg">
+        <a href="#main" className="wordmark text-lg text-ink">
           candēla
         </a>
 
@@ -54,7 +54,7 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-espresso-soft transition-colors hover:text-espresso"
+              className="text-sm text-ink-soft transition-colors hover:text-ink"
             >
               {l.label}
             </a>
@@ -67,7 +67,7 @@ export function Nav() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="-mr-2 p-2 text-espresso md:hidden"
+          className="-mr-2 p-2 text-ink md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -84,7 +84,7 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-2xl text-espresso"
+                className="font-display text-2xl text-ink"
               >
                 {l.label}
               </a>

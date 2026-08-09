@@ -82,7 +82,7 @@ export function InquiryForm() {
         <Button type="submit" variant="accent" size="lg" className="w-full sm:w-auto">
           Request the line sheet
         </Button>
-        <p aria-live="polite" className="mt-3 text-sm text-espresso-soft">
+        <p aria-live="polite" className="mt-3 text-sm text-ink-soft">
           {sent
             ? `Your mail app should have opened with the message ready to send. If it didn't, email ${CONTACT_EMAIL} directly.`
             : 'Opens a pre-filled email in your mail app — nothing is submitted from this page.'}

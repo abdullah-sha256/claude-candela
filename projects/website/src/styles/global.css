@@ -19,21 +19,33 @@
   --radius: 0.5rem;
 
   /* --- Brand ramp ------------------------------------------ */
-  --parchment: #fbf7f1; /* page base */
-  --parchment-deep: #f3ece1; /* alternating section base */
-  --sand: #e6dbca; /* borders, rules, dividers */
-  --photo-bg: #f6f3ee; /* tile behind product shots — see note below */
-  --espresso: #241c17; /* primary ink */
-  --espresso-soft: #6a5c51; /* secondary ink */
+  /* Base + text per the user (2026-08-09): #94857b / #ede8da, applied as
+     the page background and the text that sits directly on it. --espresso
+     (dark ink) is kept unchanged and deliberately NOT touched — it's still
+     used inside the white bg-card surfaces (Formats cards, collection
+     cards), where cream text would be unreadable. See the --ink comment
+     below for how the two coexist. */
+  --parchment: #94857b; /* page base */
+  --parchment-deep: #847362; /* alternating section base — darker mauve, not a hue swap */
+  --sand: #b2a89c; /* borders, rules, dividers — lightened from the original pale
+                       beige so it stays visible against the new mauve base */
+  --photo-bg: #f6f3ee; /* tile behind product shots — unaffected, sits on white cards */
+  --espresso: #241c17; /* dark ink — bg-card surfaces only, see note above */
+  --espresso-soft: #6a5c51;
+  --ink: #ede8da; /* text sitting directly on the mauve base/parchment-deep, and
+                      light text on the dark --wick section (replaces the old
+                      dual-purpose use of --parchment for that role) */
+  --ink-soft: #d3c8b8; /* secondary text on the mauve base */
   --brass: #a66a32; /* flame accent — CTAs, marks */
   --brass-bright: #c8873f; /* hover / highlight */
   --wick: #171310; /* dark section base */
-  --wordmark-bg: #94857b; /* logo chip base — from the user's shared logo swatch */
-  --wordmark-text: #ede8da; /* logo chip text — from the same swatch */
+  --wordmark-bg: #94857b; /* logo chip base — unused since the wordmark reverted to
+                              plain text, kept in case that treatment comes back */
+  --wordmark-text: #ede8da;
 
   /* --- shadcn semantic tokens ------------------------------ */
   --background: var(--parchment);
-  --foreground: var(--espresso);
+  --foreground: var(--ink);
 
   --card: #ffffff;
   --card-foreground: var(--espresso);
@@ -42,7 +54,7 @@
   --popover-foreground: var(--espresso);
 
   --primary: var(--espresso);
-  --primary-foreground: var(--parchment);
+  --primary-foreground: var(--ink);
 
   --secondary: var(--parchment-deep);
   --secondary-foreground: var(--espresso);
@@ -88,6 +100,8 @@
   --color-sand: var(--sand);
   --color-espresso: var(--espresso);
   --color-espresso-soft: var(--espresso-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
   --color-brass: var(--brass);
   --color-brass-bright: var(--brass-bright);
   --color-wick: var(--wick);
@@ -147,20 +161,16 @@
      Fraunces, so the wordmark doesn't read as a mismatched font next to
      the headings, but without fighting its diacritic placement.
 
-     Styled as a colour chip per the user's shared logo swatch (mauve base,
-     cream text) rather than plain text — the chip's own background/text
-     colour replace whatever text colour utility the caller passes, since
-     the chip needs to look the same whether it's sitting on the light nav
-     or the dark footer. */
+     Plain text, transparent background — per the user's follow-up
+     screenshot of the logo on white (2026-08-09), which superseded the
+     mauve/cream colour-chip treatment from the previous pass. Colour
+     comes from whatever text-colour utility the caller passes (both call
+     sites use text-ink, since the wordmark sits on the site's mauve
+     --parchment base), same as any other text. */
   .wordmark {
-    @apply font-wordmark lowercase inline-flex items-center rounded-md;
+    @apply font-wordmark lowercase;
     letter-spacing: 0.34em;
     font-weight: 500;
-    background: var(--wordmark-bg);
-    color: var(--wordmark-text) !important;
-    padding: 0.35em 0.9em 0.3em 1.05em; /* extra left padding: optically centre the
-                                            letterspaced text, which otherwise reads
-                                            as right-of-centre in its own box */
   }
 
   /* Small uppercase label used above section headings. */

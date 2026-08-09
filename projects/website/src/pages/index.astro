@@ -69,11 +69,11 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
       <div class="container-x">
         <p class="eyebrow">Wholesale · Toronto, Canada</p>
         <h1
-          class="mt-5 max-w-3xl text-balance text-4xl font-light leading-[1.08] tracking-tight text-espresso sm:text-5xl md:text-6xl"
+          class="mt-5 max-w-3xl text-balance text-4xl font-light leading-[1.08] tracking-tight text-ink sm:text-5xl md:text-6xl"
         >
           Candles that earn their shelf space.
         </h1>
-        <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-espresso-soft">
+        <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft">
           Candela is a Toronto candle brand built for modern gifting and strong visual
           merchandising — {SKU_COUNT} SKUs across {COLLECTION_COUNT} collections, poured in Canada,
           with no per-scent minimums — build your own case.
@@ -94,8 +94,8 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
               <div class="bg-parchment px-5 py-6">
                 <dt class="sr-only">{s.label}</dt>
                 <dd>
-                  <span class="font-display text-3xl text-espresso">{s.value}</span>
-                  <span class="mt-1 block text-xs uppercase tracking-[0.12em] text-espresso-soft">
+                  <span class="font-display text-3xl text-ink">{s.value}</span>
+                  <span class="mt-1 block text-xs uppercase tracking-[0.12em] text-ink-soft">
                     {s.label}
                   </span>
                 </dd>
@@ -110,7 +110,7 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     <section id="why" class="section bg-parchment-deep">
       <div class="container-x">
         <p class="eyebrow">Why buyers carry it</p>
-        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-espresso md:text-4xl">
+        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
           The range is designed backwards from the shelf.
         </h2>
 
@@ -121,8 +121,8 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
                 <span class="font-display text-sm text-brass">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 class="mt-3 text-xl text-espresso">{r.title}</h3>
-                <p class="mt-3 text-pretty leading-relaxed text-espresso-soft">{r.body}</p>
+                <h3 class="mt-3 text-xl text-ink">{r.title}</h3>
+                <p class="mt-3 text-pretty leading-relaxed text-ink-soft">{r.body}</p>
               </div>
             ))
           }
@@ -134,7 +134,7 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     <section class="section">
       <div class="container-x">
         <p class="eyebrow">Formats</p>
-        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-espresso md:text-4xl">
+        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
           Three vessels, three price tiers.
         </h2>
 
@@ -169,10 +169,10 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     <section id="collections" class="section bg-parchment-deep">
       <div class="container-x">
         <p class="eyebrow">The range</p>
-        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-espresso md:text-4xl">
+        <h2 class="mt-4 max-w-2xl text-3xl font-light leading-tight text-ink md:text-4xl">
           {COLLECTION_COUNT} collections, {SKU_COUNT} scents.
         </h2>
-        <p class="mt-5 max-w-xl leading-relaxed text-espresso-soft">
+        <p class="mt-5 max-w-xl leading-relaxed text-ink-soft">
           Every collection ships in mix-and-match cases of 12. Build an assortment around one,
           or run the full wall.
         </p>
@@ -254,7 +254,7 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
     </section>
 
     <!-- ============ WHOLESALE TERMS ============ -->
-    <section id="wholesale" class="section bg-wick text-parchment">
+    <section id="wholesale" class="section bg-wick text-ink">
       <div class="container-x grid gap-16 lg:grid-cols-2">
         <div>
           <p class="text-xs font-medium uppercase tracking-[0.18em] text-brass-bright">
@@ -263,7 +263,7 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
           <h2 class="mt-4 text-3xl font-light leading-tight md:text-4xl">
             Straightforward to stock.
           </h2>
-          <p class="mt-6 max-w-md text-pretty leading-relaxed text-parchment/70">
+          <p class="mt-6 max-w-md text-pretty leading-relaxed text-ink/70">
             A $250 opening order, no reorder minimum, and no exclusivity strings. Request the
             line sheet below for full SKU-level detail and current stock.
           </p>
@@ -273,12 +273,12 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
           </a>
         </div>
 
-        <dl class="divide-y divide-parchment/15 border-y border-parchment/15">
+        <dl class="divide-y divide-ink/15 border-y border-ink/15">
           {
             WHOLESALE_TERMS.map((t) => (
               <div class="flex items-baseline justify-between gap-8 py-4">
-                <dt class="text-xs uppercase tracking-[0.14em] text-parchment/50">{t.term}</dt>
-                <dd class="text-right text-parchment">{t.detail}</dd>
+                <dt class="text-xs uppercase tracking-[0.14em] text-ink/50">{t.term}</dt>
+                <dd class="text-right text-ink">{t.detail}</dd>
               </div>
             ))
           }
@@ -291,14 +291,14 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
       <div class="container-x grid gap-14 lg:grid-cols-[0.8fr_1fr]">
         <div>
           <p class="eyebrow">Get in touch</p>
-          <h2 class="mt-4 text-3xl font-light leading-tight text-espresso md:text-4xl">
+          <h2 class="mt-4 text-3xl font-light leading-tight text-ink md:text-4xl">
             Request the line sheet.
           </h2>
-          <p class="mt-6 text-pretty leading-relaxed text-espresso-soft">
+          <p class="mt-6 text-pretty leading-relaxed text-ink-soft">
             Tell us a little about your shop and we will send the current wholesale line sheet
             with pricing, minimums, and available stock.
           </p>
-          <p class="mt-8 border-t border-sand pt-6 text-sm text-espresso-soft">
+          <p class="mt-8 border-t border-sand pt-6 text-sm text-ink-soft">
             Prefer email?{' '}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
@@ -319,16 +319,16 @@ const byFormat = (['jar', 'can', 'diffuser'] as const).map((f) => {
   <footer class="border-t border-sand px-6 py-12">
     <div class="container-x flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
       <div>
-        <p class="wordmark text-base">candēla</p>
-        <p class="mt-2 text-sm text-espresso-soft">
+        <p class="wordmark text-base text-ink">candēla</p>
+        <p class="mt-2 text-sm text-ink-soft">
           Scented soy candles · bougies de soja parfumées
         </p>
       </div>
-      <p class="text-sm text-espresso-soft">
+      <p class="text-sm text-ink-soft">
         Made in Canada · Toronto, ON ·{' '}
         <a
           href={`mailto:${CONTACT_EMAIL}`}
-          class="hover:text-espresso hover:underline hover:underline-offset-4"
+          class="hover:text-ink hover:underline hover:underline-offset-4"
         >
           {CONTACT_EMAIL}
         </a>
