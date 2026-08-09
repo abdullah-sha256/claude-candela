@@ -26,8 +26,8 @@
                            off-white sweep so the seam disappears */
   --ink: #211a13; /* primary text */
   --ink-soft: #6d6052; /* secondary text */
-  --terracotta: #9c4a2f; /* accent — small punctuation only */
-  --terracotta-bright: #b85c3a; /* hover */
+  --terracotta: #94857b; /* accent — small punctuation only; the logo's mauve base per the user, replacing the original reddish terracotta */
+  --terracotta-bright: #b3a396; /* hover, and the accent on the dark wick section where the base tone would be too dim */
   --sage: #7d8471; /* quiet secondary accent */
   --wick: #191410; /* dark section base */
   --cream: #f2ead9; /* light text on the dark --wick section */
