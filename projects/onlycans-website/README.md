@@ -24,9 +24,6 @@ Both keep an unlisted-but-reachable staging URL out of search results. Removing 
 the launch step the Candela site went through — see `../website/README.md`'s "Indexing" section
 for how that played out there.
 
-There's also a real content **mismatch**, confirmed with the user 2026-08-08 rather than
-silently patched over — see "Product photography" below before this goes to a buyer.
-
 ## Product line-up: 4 SKUs, not 5
 
 The brochure lists a 5th SKU, plain **"Plant in a Can"** (distinct from "My First Plant in a
@@ -44,15 +41,11 @@ naming convention). `scripts/build-product-photos.sh` cuts each one out and norm
 back to the `CanMock` illustration for anything missing — currently nothing, but the fallback
 stays in place for whenever a new SKU launches ahead of its photography.
 
-**"Catnip in a Can" shows a photo of a can printed "CAT GRASS IN A CAN,"** with cat-grass copy
-(supports digestion, reduces hairballs) — not catnip. Cat grass and catnip are different plants
-with different effects on cats. The user's explicit call (2026-08-08) was to keep the brochure's
-"Catnip" name and copy anyway and use the photo as-is. That means **the product photo and the
-on-page name/description don't match** — flagging again here because it's the kind of mismatch
-a retailer notices immediately on unboxing, not because it needs to be re-litigated. If the can
-art gets reprinted to say "Catnip," or the site copy gets changed to "Cat Grass" instead,
-`onlycans.ts` (the `catnip` entry) and the script comment above it are both marked for the
-update.
+**"Cat Grass in a Can" is named after what's actually printed on the can.** The brochure calls
+this SKU "Catnip in a Can," but the physical can (and its copy — supports digestion, reduces
+hairballs) is Cat Grass, a different plant with different effects on cats. An earlier pass kept
+the brochure's "Catnip" name anyway; corrected 2026-08-08 to match the can instead. If real
+Catnip is introduced as its own SKU later, it needs its own photo — don't reuse this one.
 
 ## Swap points
 
@@ -113,5 +106,4 @@ throwaway Cloudflare account with no login, useful for a quick shareable link, b
 lives in an account you can't manage and expires on its own.
 
 > **Before pointing a real domain at this**, remove `public/_headers` and `public/robots.txt` —
-> see "Not launch-ready" above. Both block search indexing on purpose while this build has the
-> Catnip/Cat Grass mismatch and no dropped-SKU cleanup pass from a buyer's perspective.
+> see "Not launch-ready" above.

@@ -23,22 +23,19 @@ SUBJECT=960   # 80% of canvas => 10% margin each side
 # slug -> source JPEG in assets/candles/onlycans (filenames are leftover from
 # the shared photo shoot, not a naming convention).
 #
-# NOTE on "catnip": the physical can in Candela-087.jpg is printed
-# "CAT GRASS IN A CAN" with cat-grass copy (digestion / hairballs), not
-# catnip. Per the user (2026-08-08), the photo is used anyway under the
-# brochure's "Catnip in a Can" name and copy — a real mismatch between the
-# printed can and the site, not a mistake in this script. Revisit if/when
-# the can artwork is reprinted to match.
-#
 # The brochure's plain "Plant in a Can" (distinct from "My First Plant in a
 # Can") has no entry here — no can of that design was ever shot, and the
 # user dropped the SKU from the site entirely rather than leave it on a
 # mock illustration. See onlycans.ts if it needs to come back.
+#
+# "cat-grass" was briefly listed as "Catnip in a Can" (the brochure's name)
+# despite the can itself being printed "CAT GRASS IN A CAN" — corrected
+# 2026-08-08 to match what's actually on the can.
 MAP="
 first-plant Candela-084
 herb        Candela-081
 flower      Candela-090
-catnip      Candela-087
+cat-grass   Candela-087
 "
 
 count=0

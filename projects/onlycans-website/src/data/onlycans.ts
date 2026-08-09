@@ -16,7 +16,7 @@
  * Don't re-add it from the PDF without checking with the user first.
  */
 
-export type Badge = 'mystery' | 'catnip'
+export type Badge = 'mystery' | 'cat-grass'
 
 export interface Product {
   slug: string
@@ -57,18 +57,17 @@ export const PRODUCTS: Product[] = [
     accent: 'kraft',
   },
   {
-    // The photo wired to this slug (src/assets/products/catnip.png, sourced
-    // from Candela-087.jpg) is a can printed "CAT GRASS IN A CAN" with
-    // cat-grass copy — a different plant from catnip. Kept as "Catnip" per
-    // the user's explicit call (2026-08-08), not an oversight. See the
-    // README's "Product photography" section before changing either the
-    // name/copy here or the photo it's paired with.
-    slug: 'catnip',
-    name: 'Catnip in a Can',
-    badge: 'catnip',
-    badgeLabel: 'Always Catnip · Fixed Variety',
+    // Corrected 2026-08-08: previously listed as "Catnip in a Can", but the
+    // physical can (src/assets/products/cat-grass.png, sourced from
+    // Candela-087.jpg) is printed "CAT GRASS IN A CAN" with cat-grass-
+    // specific copy (supports digestion, helps reduce hairballs, easy to
+    // grow). Name and blurb below now match the can.
+    slug: 'cat-grass',
+    name: 'Cat Grass in a Can',
+    badge: 'cat-grass',
+    badgeLabel: 'Always Cat Grass · Fixed Variety',
     blurb:
-      "No mystery, no maybe — just real, grow-your-own catnip. The instant sell next to any pet product, for the one shopper who already knows exactly who it's for.",
+      "No mystery, no maybe — just real, grow-your-own cat grass. Supports healthy digestion and helps reduce hairballs, and it's an instant sell next to any pet product, for the one shopper who already knows exactly who it's for.",
     accent: 'tin',
   },
 ]
